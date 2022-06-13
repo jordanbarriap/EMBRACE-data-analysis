@@ -66,5 +66,5 @@ for label in labelling:
 total_time = labelling[-1][2]
 
 for k,v in user_time.items():
-    percent = (v/total_time) * 100
+    percent = "{:.2f}".format((v/total_time) * 100)
     print(f'user {k}: {percent}%')
