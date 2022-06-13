@@ -1,0 +1,497 @@
+{
+    "id": "ol7r52rvs2-adf1-4249-a4d5-c004a9b55d00",
+    "language_model": "assemblyai_default",
+    "acoustic_model": "assemblyai_default",
+    "language_code": "en",
+    "status": "completed",
+    "audio_url": "https://cdn.assemblyai.com/upload/eb6da8ec-d038-4f77-90b3-20424880b7d0",
+    "text": "Today is a sunny day. How's the weather. Tomorrow. Ms. Padreson? Frances? I am drinking a cup of water. I have a box of cookies in front of me.",
+    "words": [
+        {
+            "text": "Today",
+            "start": 670,
+            "end": 906,
+            "confidence": 0.99939,
+            "speaker": "A"
+        },
+        {
+            "text": "is",
+            "start": 968,
+            "end": 1158,
+            "confidence": 0.53629,
+            "speaker": "A"
+        },
+        {
+            "text": "a",
+            "start": 1184,
+            "end": 1302,
+            "confidence": 0.57,
+            "speaker": "A"
+        },
+        {
+            "text": "sunny",
+            "start": 1316,
+            "end": 1618,
+            "confidence": 0.97034,
+            "speaker": "A"
+        },
+        {
+            "text": "day.",
+            "start": 1654,
+            "end": 1998,
+            "confidence": 0.99868,
+            "speaker": "A"
+        },
+        {
+            "text": "How's",
+            "start": 2084,
+            "end": 2482,
+            "confidence": 0.4679,
+            "speaker": "B"
+        },
+        {
+            "text": "the",
+            "start": 2506,
+            "end": 2622,
+            "confidence": 0.98,
+            "speaker": "B"
+        },
+        {
+            "text": "weather.",
+            "start": 2636,
+            "end": 2950,
+            "confidence": 0.81087,
+            "speaker": "B"
+        },
+        {
+            "text": "Tomorrow.",
+            "start": 3010,
+            "end": 3750,
+            "confidence": 0.99985,
+            "speaker": "A"
+        },
+        {
+            "text": "Ms.",
+            "start": 4610,
+            "end": 5014,
+            "confidence": 0.6477,
+            "speaker": "B"
+        },
+        {
+            "text": "Padreson?",
+            "start": 5062,
+            "end": 5794,
+            "confidence": 0.22806,
+            "speaker": "B"
+        },
+        {
+            "text": "Frances?",
+            "start": 5842,
+            "end": 6750,
+            "confidence": 0.4779,
+            "speaker": "B"
+        },
+        {
+            "text": "I",
+            "start": 9810,
+            "end": 10174,
+            "confidence": 0.82,
+            "speaker": "B"
+        },
+        {
+            "text": "am",
+            "start": 10212,
+            "end": 10414,
+            "confidence": 0.94,
+            "speaker": "B"
+        },
+        {
+            "text": "drinking",
+            "start": 10452,
+            "end": 10946,
+            "confidence": 0.82627,
+            "speaker": "B"
+        },
+        {
+            "text": "a",
+            "start": 11018,
+            "end": 11218,
+            "confidence": 0.99,
+            "speaker": "B"
+        },
+        {
+            "text": "cup",
+            "start": 11244,
+            "end": 11438,
+            "confidence": 0.99917,
+            "speaker": "B"
+        },
+        {
+            "text": "of",
+            "start": 11474,
+            "end": 11638,
+            "confidence": 1.0,
+            "speaker": "B"
+        },
+        {
+            "text": "water.",
+            "start": 11664,
+            "end": 12240,
+            "confidence": 0.87671,
+            "speaker": "B"
+        },
+        {
+            "text": "I",
+            "start": 12990,
+            "end": 13390,
+            "confidence": 1.0,
+            "speaker": "B"
+        },
+        {
+            "text": "have",
+            "start": 13440,
+            "end": 13798,
+            "confidence": 0.50903,
+            "speaker": "B"
+        },
+        {
+            "text": "a",
+            "start": 13884,
+            "end": 14098,
+            "confidence": 0.93,
+            "speaker": "B"
+        },
+        {
+            "text": "box",
+            "start": 14124,
+            "end": 14386,
+            "confidence": 0.82901,
+            "speaker": "B"
+        },
+        {
+            "text": "of",
+            "start": 14448,
+            "end": 14674,
+            "confidence": 1.0,
+            "speaker": "B"
+        },
+        {
+            "text": "cookies",
+            "start": 14712,
+            "end": 15170,
+            "confidence": 0.99455,
+            "speaker": "B"
+        },
+        {
+            "text": "in",
+            "start": 15230,
+            "end": 15418,
+            "confidence": 0.99579,
+            "speaker": "B"
+        },
+        {
+            "text": "front",
+            "start": 15444,
+            "end": 15634,
+            "confidence": 0.99988,
+            "speaker": "B"
+        },
+        {
+            "text": "of",
+            "start": 15672,
+            "end": 15838,
+            "confidence": 1.0,
+            "speaker": "B"
+        },
+        {
+            "text": "me.",
+            "start": 15864,
+            "end": 15940,
+            "confidence": 0.99993,
+            "speaker": "B"
+        }
+    ],
+    "utterances": [
+        {
+            "confidence": 0.81494,
+            "end": 1998,
+            "speaker": "A",
+            "start": 670,
+            "text": "Today is a sunny day.",
+            "words": [
+                {
+                    "text": "Today",
+                    "start": 670,
+                    "end": 906,
+                    "confidence": 0.99939,
+                    "speaker": "A"
+                },
+                {
+                    "text": "is",
+                    "start": 968,
+                    "end": 1158,
+                    "confidence": 0.53629,
+                    "speaker": "A"
+                },
+                {
+                    "text": "a",
+                    "start": 1184,
+                    "end": 1302,
+                    "confidence": 0.57,
+                    "speaker": "A"
+                },
+                {
+                    "text": "sunny",
+                    "start": 1316,
+                    "end": 1618,
+                    "confidence": 0.97034,
+                    "speaker": "A"
+                },
+                {
+                    "text": "day.",
+                    "start": 1654,
+                    "end": 1998,
+                    "confidence": 0.99868,
+                    "speaker": "A"
+                }
+            ]
+        },
+        {
+            "confidence": 0.7529233333333334,
+            "end": 2950,
+            "speaker": "B",
+            "start": 2084,
+            "text": "How's the weather.",
+            "words": [
+                {
+                    "text": "How's",
+                    "start": 2084,
+                    "end": 2482,
+                    "confidence": 0.4679,
+                    "speaker": "B"
+                },
+                {
+                    "text": "the",
+                    "start": 2506,
+                    "end": 2622,
+                    "confidence": 0.98,
+                    "speaker": "B"
+                },
+                {
+                    "text": "weather.",
+                    "start": 2636,
+                    "end": 2950,
+                    "confidence": 0.81087,
+                    "speaker": "B"
+                }
+            ]
+        },
+        {
+            "confidence": 0.99985,
+            "end": 3750,
+            "speaker": "A",
+            "start": 3010,
+            "text": "Tomorrow.",
+            "words": [
+                {
+                    "text": "Tomorrow.",
+                    "start": 3010,
+                    "end": 3750,
+                    "confidence": 0.99985,
+                    "speaker": "A"
+                }
+            ]
+        },
+        {
+            "confidence": 0.8532,
+            "end": 15940,
+            "speaker": "B",
+            "start": 4610,
+            "text": "Ms. Padreson? Frances? I am drinking a cup of water. I have a box of cookies in front of me.",
+            "words": [
+                {
+                    "text": "Ms.",
+                    "start": 4610,
+                    "end": 5014,
+                    "confidence": 0.6477,
+                    "speaker": "B"
+                },
+                {
+                    "text": "Padreson?",
+                    "start": 5062,
+                    "end": 5794,
+                    "confidence": 0.22806,
+                    "speaker": "B"
+                },
+                {
+                    "text": "Frances?",
+                    "start": 5842,
+                    "end": 6750,
+                    "confidence": 0.4779,
+                    "speaker": "B"
+                },
+                {
+                    "text": "I",
+                    "start": 9810,
+                    "end": 10174,
+                    "confidence": 0.82,
+                    "speaker": "B"
+                },
+                {
+                    "text": "am",
+                    "start": 10212,
+                    "end": 10414,
+                    "confidence": 0.94,
+                    "speaker": "B"
+                },
+                {
+                    "text": "drinking",
+                    "start": 10452,
+                    "end": 10946,
+                    "confidence": 0.82627,
+                    "speaker": "B"
+                },
+                {
+                    "text": "a",
+                    "start": 11018,
+                    "end": 11218,
+                    "confidence": 0.99,
+                    "speaker": "B"
+                },
+                {
+                    "text": "cup",
+                    "start": 11244,
+                    "end": 11438,
+                    "confidence": 0.99917,
+                    "speaker": "B"
+                },
+                {
+                    "text": "of",
+                    "start": 11474,
+                    "end": 11638,
+                    "confidence": 1.0,
+                    "speaker": "B"
+                },
+                {
+                    "text": "water.",
+                    "start": 11664,
+                    "end": 12240,
+                    "confidence": 0.87671,
+                    "speaker": "B"
+                },
+                {
+                    "text": "I",
+                    "start": 12990,
+                    "end": 13390,
+                    "confidence": 1.0,
+                    "speaker": "B"
+                },
+                {
+                    "text": "have",
+                    "start": 13440,
+                    "end": 13798,
+                    "confidence": 0.50903,
+                    "speaker": "B"
+                },
+                {
+                    "text": "a",
+                    "start": 13884,
+                    "end": 14098,
+                    "confidence": 0.93,
+                    "speaker": "B"
+                },
+                {
+                    "text": "box",
+                    "start": 14124,
+                    "end": 14386,
+                    "confidence": 0.82901,
+                    "speaker": "B"
+                },
+                {
+                    "text": "of",
+                    "start": 14448,
+                    "end": 14674,
+                    "confidence": 1.0,
+                    "speaker": "B"
+                },
+                {
+                    "text": "cookies",
+                    "start": 14712,
+                    "end": 15170,
+                    "confidence": 0.99455,
+                    "speaker": "B"
+                },
+                {
+                    "text": "in",
+                    "start": 15230,
+                    "end": 15418,
+                    "confidence": 0.99579,
+                    "speaker": "B"
+                },
+                {
+                    "text": "front",
+                    "start": 15444,
+                    "end": 15634,
+                    "confidence": 0.99988,
+                    "speaker": "B"
+                },
+                {
+                    "text": "of",
+                    "start": 15672,
+                    "end": 15838,
+                    "confidence": 1.0,
+                    "speaker": "B"
+                },
+                {
+                    "text": "me.",
+                    "start": 15864,
+                    "end": 15940,
+                    "confidence": 0.99993,
+                    "speaker": "B"
+                }
+            ]
+        }
+    ],
+    "confidence": 0.841286896551724,
+    "audio_duration": 16,
+    "punctuate": true,
+    "format_text": true,
+    "dual_channel": null,
+    "webhook_url": null,
+    "webhook_status_code": null,
+    "speed_boost": false,
+    "auto_highlights_result": null,
+    "auto_highlights": false,
+    "audio_start_from": null,
+    "audio_end_at": null,
+    "word_boost": [],
+    "boost_param": null,
+    "filter_profanity": false,
+    "redact_pii": false,
+    "redact_pii_audio": false,
+    "redact_pii_audio_quality": null,
+    "redact_pii_policies": null,
+    "redact_pii_sub": null,
+    "speaker_labels": true,
+    "content_safety": false,
+    "iab_categories": false,
+    "content_safety_labels": {
+        "status": "unavailable",
+        "results": [],
+        "summary": {}
+    },
+    "iab_categories_result": {
+        "status": "unavailable",
+        "results": [],
+        "summary": {}
+    },
+    "language_detection": true,
+    "custom_spelling": null,
+    "disfluencies": false,
+    "sentiment_analysis": false,
+    "auto_chapters": false,
+    "chapters": null,
+    "sentiment_analysis_results": null,
+    "entity_detection": false,
+    "entities": null
+}
