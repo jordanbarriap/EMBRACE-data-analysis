@@ -1,3 +1,4 @@
+from collections import defaultdict
 from resemblyzer import preprocess_wav, VoiceEncoder
 from resemblyzer.audio import sampling_rate
 from spectralcluster import SpectralClusterer
@@ -8,7 +9,7 @@ from pathlib import Path
 '''
 
 #give the file path to your audio file
-audio_file_path = '/home/parallels/Desktop/Parallels Shared Folders/Home/Desktop/Code/Recognition/audios/Silence_Test.wav'
+audio_file_path = '/home/parallels/Desktop/Parallels Shared Folders/Home/Desktop/Code/Recognition/audios/two_speakers.wav'
 wav_fpath = Path(audio_file_path)
 
 wav = preprocess_wav(wav_fpath)
@@ -54,3 +55,16 @@ def create_labelling(labels,wav_splits):
 labelling = create_labelling(labels,wav_splits)
 print(labelling)
 
+'''
+    Aggregation with percentage
+'''
+user_time = defaultdict(float)
+for label in labelling:
+    user_time[label[0]] += label[2] - label[1]
+
+# Total time is the end stamp the the last label
+total_time = labelling[-1][2]
+
+for k,v in user_time.items():
+    percent = (v/total_time) * 100
+    print(f'user {k}: {percent}%')
