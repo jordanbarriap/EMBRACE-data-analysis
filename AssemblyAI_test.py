@@ -60,8 +60,3 @@ response = get_transcript(endpoint)
 
 with open('AssemblyAI_transcript.json', 'w', encoding='utf-8') as f:
     json.dump(response.json(), f, ensure_ascii=False, indent=4)
-
-
-
-
-
