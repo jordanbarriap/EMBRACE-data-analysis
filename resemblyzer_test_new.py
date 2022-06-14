@@ -62,7 +62,7 @@ user_time = defaultdict(float)
 for label in labelling:
     user_time[label[0]] += label[2] - label[1]
 
-# Total time is the end stamp the the last label
+# Total time is the end stamp of the last label
 total_time = labelling[-1][2]
 
 for k,v in user_time.items():
