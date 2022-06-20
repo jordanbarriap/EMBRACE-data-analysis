@@ -59,8 +59,4 @@ endpoint = "https://api.assemblyai.com/v2/transcript/otc6ztcel3-73d0-47be-b531-5
 response = get_transcript(endpoint)
 
 with open('AssemblyAI_transcript.json', 'w', encoding='utf-8') as f:
-<<<<<<< HEAD
     json.dump(response.json(), f, ensure_ascii=False, indent=4)
-=======
-    json.dump(response.json(), f, ensure_ascii=False, indent=4)
->>>>>>> ffff5b75e025e6c1805e55963732c07084a900fc
