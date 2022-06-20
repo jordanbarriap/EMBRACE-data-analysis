@@ -51,17 +51,12 @@ def get_transcript(endpoint):
 '''
     Main steps
 '''
-upload_url = upload_audio("audios/overlap.wav")['upload_url']
-submit_for_transcription(upload_url)
+# upload_url = upload_audio("audios/short_overlap.wav")['upload_url']
+# submit_for_transcription(upload_url)
 
 # retrive endpoint from AssemblyAI account processing queue
-endpoint = "https://api.assemblyai.com/v2/transcript/otlhsaml0k-4f87-4a71-9a3a-ed722577a74c"
+endpoint = "https://api.assemblyai.com/v2/transcript/otc6ztcel3-73d0-47be-b531-53f69e85f533"
 response = get_transcript(endpoint)
 
 with open('AssemblyAI_transcript.json', 'w', encoding='utf-8') as f:
     json.dump(response.json(), f, ensure_ascii=False, indent=4)
-
-
-
-
-
