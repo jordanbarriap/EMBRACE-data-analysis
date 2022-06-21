@@ -1,25 +1,26 @@
 from google.cloud import speech_v1p1beta1 as speech
 import os
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "KEY_PATH"
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "/Users/zikangying/Desktop/Code/NLP/KEY.json"
 
 client = speech.SpeechClient()
 
-speech_file = "audios/3_speakers.wav"
+speech_file = "/Users/zikangying/Desktop/Code/NLP/audios/3_speakers.wav"
 
 with open(speech_file, "rb") as audio_file:
     content = audio_file.read()
 
-audio = speech.RecognitionAudio(content=content)
+audio = speech.types.RecognitionAudio(content=content)
 
-diarization_config = speech.SpeakerDiarizationConfig(
+diarization_config = speech.types.SpeakerDiarizationConfig(
   enable_speaker_diarization=True,
-  min_speaker_count=2,
-  max_speaker_count=4,
+  min_speaker_count=3,
+  max_speaker_count=3,
 )
 
-config = speech.RecognitionConfig(
-    encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
-    sample_rate_hertz=8000,
+
+config = speech.types.RecognitionConfig(
+    encoding=speech.types.RecognitionConfig.AudioEncoding.LINEAR16,
+    sample_rate_hertz=48000,
     language_code="en-US",
     diarization_config=diarization_config,
 )
