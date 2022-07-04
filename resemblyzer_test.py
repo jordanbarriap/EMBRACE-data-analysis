@@ -9,7 +9,7 @@ from spectralcluster import SpectralClusterer
 '''
 
 #give the file path to your audio file
-audio_file_path = 'audios/3_speakers_2.wav'
+audio_file_path = 'audios/3_speakers.wav'
 wav_fpath = Path(audio_file_path)
 
 wav = preprocess_wav(wav_fpath)
