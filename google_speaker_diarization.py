@@ -4,7 +4,7 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "/Users/zikangying/Desktop/Code/N
 
 client = speech.SpeechClient()
 
-speech_file = "/Users/zikangying/Desktop/Code/NLP/audios/3_speakers.wav"
+speech_file = "/Users/zikangying/Desktop/Code/NLP/audios/output.wav"
 
 with open(speech_file, "rb") as audio_file:
     content = audio_file.read()
@@ -22,7 +22,9 @@ config = speech.types.RecognitionConfig(
     encoding=speech.types.RecognitionConfig.AudioEncoding.LINEAR16,
     sample_rate_hertz=48000,
     language_code="en-US",
-    diarization_config=diarization_config,
+    # diarization_config=diarization_config,
+    audio_channel_count=3,
+    enable_separate_recognition_per_channel=True,
 )
 
 print("Waiting for operation to complete...")
@@ -41,3 +43,10 @@ for word_info in words_info:
     print(
         u"word: '{}', speaker_tag: {}".format(word_info.word, word_info.speaker_tag)
     )
+
+for i, result in enumerate(response.results):
+    alternative = result.alternatives[0]
+    print("-" * 20)
+    print("First alternative of result {}".format(i))
+    print(u"Transcript: {}".format(alternative.transcript))
+    print(u"Channel Tag: {}".format(result.channel_tag))
