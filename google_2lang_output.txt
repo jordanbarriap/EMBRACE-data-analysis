@@ -1,0 +1,5 @@
+--------------------
+First alternative of result 0: transcript: "el pr\303\263ximo cap\303\255tulo en voz alta cuando veas una oraci\303\263n azul mueve los dibujos cosas por un juego jugando que no deb\303\255as t\303\272 en la casa dicen que se hable espa\303\261ol y entonces aqu\303\255 en la casa tambi\303\251n tiene que hablar espa\303\261ol"
+confidence: 0.9545560479164124
+ 
+Transcript: el próximo capítulo en voz alta cuando veas una oración azul mueve los dibujos cosas por un juego jugando que no debías tú en la casa dicen que se hable español y entonces aquí en la casa también tiene que hablar español 
