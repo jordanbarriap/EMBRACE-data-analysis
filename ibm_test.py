@@ -1,5 +1,4 @@
 # depentencies import
-from multiprocessing import AuthenticationError
 from ibm_watson import SpeechToTextV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 import json
@@ -11,7 +10,7 @@ authenticator = IAMAuthenticator(api_key)
 stt = SpeechToTextV1(authenticator=authenticator)
 stt.set_service_url(url)
 
-file_name = "/Users/zikangying/Downloads/record-667269360.9571331.wav"
+file_name = "/Users/zikangying/Desktop/Code/NLP/audios/record-667269360.9571331.wav"
 
 with open(file_name, 'rb') as f:
     res = stt.recognize(audio=f, content_type='audio/wav', speaker_labels=True, model='es-ES_NarrowbandModel').get_result()
