@@ -14,7 +14,6 @@ file_name = "/home/kangying/Desktop/Code/AudioProcessing/audios/record-672279722
 
 with open(file_name, 'rb') as f:
     res = stt.recognize(audio=f, content_type='audio/wav', speaker_labels=True, model='es-MX_NarrowbandModel').get_result()
-    print(type(res))
 
 with open('ibm_transcript.json', 'w', encoding='utf-8') as f:
     json.dump(res, f, ensure_ascii=False, indent=4)
