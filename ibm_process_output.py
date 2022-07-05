@@ -17,7 +17,7 @@ class speaker:
         return f'This is speaker {self.label} saying {self.utterance}'
 
 
-speakers = defaultdict(speaker)
+timepoints = defaultdict(speaker)
 intervals = []
 
 # "results" is a list, and it's elements are intervals(dict)!
@@ -29,11 +29,21 @@ for interval in data['results']:
 for interval in data['results']:
     for timestamp in interval['alternatives'][0]['timestamps']:
         utterance = {'text': timestamp[0], 'from': timestamp[1], 'to': timestamp[2]}
-        speakers[timestamp[1]] = speaker(None, utterance)
+        timepoints[timestamp[1]] = speaker(None, utterance)
 
 # corresponds the text with speaker labels, which is a list
 for label in data['speaker_labels']:
-    speakers[label['from']].label = label['speaker']
+    timepoints[label['from']].label = label['speaker']
 
-for k, v in speakers.items():
+# get the result based on the timepoints
+for v in timepoints.values():
     print(f'{v}')
+
+# get the result based on the speaker(s)
+speakers = defaultdict(list)
+for utter in timepoints.values():
+    speakers[f'speaker_label:{utter.label}'].append(utter.utterance)
+    
+
+with open('ibm_speaker_output.json','w', encoding='utf-8') as f:
+    json.dump(speakers, f, ensure_ascii=False, indent=4)
