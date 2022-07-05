@@ -19,6 +19,6 @@ speakers = defaultdict(speaker)
 # "results" is a list, and it's elements are intervals(dict)!
 print(data['results'][0]['alternatives'][0]['timestamps'])
 
-# print(data["speaker_labels"])
+# corresponds the text with speaker labels
 
 
