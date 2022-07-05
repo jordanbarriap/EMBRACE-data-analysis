@@ -10,10 +10,11 @@ authenticator = IAMAuthenticator(api_key)
 stt = SpeechToTextV1(authenticator=authenticator)
 stt.set_service_url(url)
 
-file_name = "/Users/zikangying/Desktop/Code/NLP/audios/record-667269360.9571331.wav"
+file_name = "/home/kangying/Desktop/Code/AudioProcessing/audios/record-672279722.51811.wav"
 
 with open(file_name, 'rb') as f:
-    res = stt.recognize(audio=f, content_type='audio/wav', speaker_labels=True, model='es-ES_NarrowbandModel').get_result()
+    res = stt.recognize(audio=f, content_type='audio/wav', speaker_labels=True, model='es-MX_NarrowbandModel').get_result()
+    print(type(res))
 
 with open('ibm_transcript.json', 'w', encoding='utf-8') as f:
     json.dump(res, f, ensure_ascii=False, indent=4)
