@@ -1,5 +1,8 @@
 from collections import defaultdict
 from math import sqrt
+from click import pass_context
+import matplotlib.pyplot as plt
+
 import json
 
 # convert the json into a dict object
@@ -21,7 +24,7 @@ class speaker:
 timepoints = defaultdict(speaker)
 # intervals = []
 
-# "results" is a list, and it's elements are intervals(dict)!
+# # "results" is a list, and it's elements are intervals(dict)!
 # # the list of all intervals. We can calculate the time from it
 # for interval in data['results']:
 #     intervals.append(interval)
@@ -81,3 +84,33 @@ for speaker in range(num_speakers):
     variance = sum((x - mean) ** 2 for x in num_words_intervals[speaker]) / num_intervals[speaker]
     std_dev = sqrt(variance)
     print(f'The standard deviation of words per interval for speaker {speaker} is {std_dev}')
+
+'''
+Plot
+'''
+# declare a figure Gantt
+fig, gnt = plt.subplots()
+
+# Setting X-axis limit
+gnt.set_xlim(0, list(timepoints.values())[-1].utterance['to'])
+
+# Setting Y-axis limit
+gnt.set_ylim(0, 20)
+
+
+# Setting labels for X and Y axis
+gnt.set_xlabel('seconds since start')
+gnt.set_ylabel('Speaker')
+
+# Setting ticks on y-axis
+speaker_list = []
+for i in range(num_speakers):
+    speaker_list.append(15+10*i)
+gnt.set_yticks(speaker_list)
+# Labelling ticks of y-axis
+gnt.set_yticklabels([f'i' for i in range(num_speakers)])
+
+# Setting graph attribute
+gnt.grid(True)
+
+# Declaring bars in schedule
