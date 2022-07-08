@@ -1,10 +1,10 @@
 from google.cloud import speech_v1p1beta1 as speech
 import os
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "/home/kangying/Desktop/KEY.json"
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "KEY.json"
 
 client = speech.SpeechClient()
 
-speech_file = "/home/kangying/Desktop/Code/AudioProcessing/audios/record-672279722.51811.wav"
+speech_file = "audios/record-672279722.51811.wav"
 first_lang = "es"
 second_lang = "en-US"
 
