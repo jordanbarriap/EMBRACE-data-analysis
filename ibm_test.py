@@ -1,7 +1,7 @@
 # depentencies import
 from ibm_watson import SpeechToTextV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
-import speech_recognition as sr
+# import speech_recognition as sr
 import json
 import os
 
@@ -26,7 +26,7 @@ file_name = 'audios/record-672279722.51811.flac'
 #     audio_data = recognizer.record(source)
 
 with open(file_name, 'rb') as f:
-    res = stt.recognize(audio=f, content_type='audio/flac', speaker_labels=True, model='es-MX_NarrowbandModel', background_audio_suppression = 0.5).get_result()
+    res = stt.recognize(audio=f, content_type='audio/flac', speaker_labels=True, model='es-LA_Telephony', background_audio_suppression = 0.4).get_result()
 
 with open('ibm_transcript_noise_suppression.json', 'w', encoding='utf-8') as f:
     json.dump(res, f, ensure_ascii=False, indent=4)
