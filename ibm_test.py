@@ -12,7 +12,7 @@ authenticator = IAMAuthenticator(api_key)
 stt = SpeechToTextV1(authenticator=authenticator)
 stt.set_service_url(url)
 
-file_name = 'audios/record-672279722.51811.flac'
+file_name = 'audios/record-667269360.9571331.wav'
 
 # recognizer = sr.Recognizer()
 # recognizer.energy_threshold = 4000
@@ -26,7 +26,7 @@ file_name = 'audios/record-672279722.51811.flac'
 #     audio_data = recognizer.record(source)
 
 with open(file_name, 'rb') as f:
-    res = stt.recognize(audio=f, content_type='audio/flac', speaker_labels=True, model='es-LA_Telephony', background_audio_suppression = 0.4).get_result()
+    res = stt.recognize(audio=f, content_type='audio/wav', speaker_labels=True, model='es-LA_Telephony', background_audio_suppression = 0.4).get_result()
 
-with open('ibm_transcript_noise_suppression.json', 'w', encoding='utf-8') as f:
+with open('ibm_transcript_noise_suppression1.json', 'w', encoding='utf-8') as f:
     json.dump(res, f, ensure_ascii=False, indent=4)
