@@ -1,0 +1,63 @@
+word: 'little', speaker_tag: 2
+word: 'proximo', speaker_tag: 2
+word: 'capital', speaker_tag: 2
+word: 'in', speaker_tag: 2
+word: 'Bustleton', speaker_tag: 2
+word: 'read', speaker_tag: 2
+word: 'the', speaker_tag: 2
+word: 'next', speaker_tag: 2
+word: 'chapter', speaker_tag: 2
+word: 'out', speaker_tag: 2
+word: 'loud', speaker_tag: 2
+word: 'when', speaker_tag: 2
+word: 'you', speaker_tag: 2
+word: 'see', speaker_tag: 2
+word: 'a', speaker_tag: 2
+word: 'blue', speaker_tag: 2
+word: 'sentence', speaker_tag: 2
+word: 'move', speaker_tag: 2
+word: 'the', speaker_tag: 2
+word: 'pictures', speaker_tag: 2
+word: 'Espanol', speaker_tag: 1
+word: 'can', speaker_tag: 1
+word: 'Olivia', speaker_tag: 1
+word: 'be', speaker_tag: 1
+word: 'a', speaker_tag: 1
+word: 'cosigner', speaker_tag: 1
+word: 'on', speaker_tag: 1
+word: 'your', speaker_tag: 1
+word: 'mobile', speaker_tag: 1
+word: 'phone', speaker_tag: 1
+word: 'Chase', speaker_tag: 1
+word: 'near', speaker_tag: 1
+word: 'me', speaker_tag: 1
+--------------------
+First alternative of result 0
+Transcript: little proximo capital in Bustleton
+First Word and Confidence: (little, 0.9167868494987488)
+Channel Tag: 0
+--------------------
+First alternative of result 1
+Transcript:  read the next chapter out loud when you see a blue sentence move the pictures
+First Word and Confidence: (read, 0.9876290559768677)
+Channel Tag: 0
+--------------------
+First alternative of result 2
+Transcript:  Espanol
+First Word and Confidence: (Espanol, 0.7925029993057251)
+Channel Tag: 0
+--------------------
+First alternative of result 3
+Transcript:  can Olivia be a cosigner on your mobile phone
+First Word and Confidence: (can, 0.649175763130188)
+Channel Tag: 0
+--------------------
+First alternative of result 4
+Transcript:  Chase near me
+First Word and Confidence: (Chase, 0.2618709206581116)
+Channel Tag: 0
+--------------------
+First alternative of result 5
+Transcript: 
+First Word and Confidence: (little, 0.9167868494987488)
+Channel Tag: 0
