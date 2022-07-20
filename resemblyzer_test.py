@@ -3,13 +3,15 @@ from pathlib import Path
 from resemblyzer import preprocess_wav, VoiceEncoder
 from resemblyzer.audio import sampling_rate
 from spectralcluster import SpectralClusterer
+import sys
+
 
 '''
     Create the embed for the audio
 '''
 
 #give the file path to your audio file
-audio_file_path = 'audios/3_speakers.wav'
+audio_file_path = 'audios/record-672279722.51811.wav'
 wav_fpath = Path(audio_file_path)
 
 wav = preprocess_wav(wav_fpath)
@@ -53,6 +55,7 @@ def create_labelling(labels,wav_splits):
 
 # a list of tuples with values in order (speaker_label,start_time,end_time)
 labelling = create_labelling(labels,wav_splits)
+sys.stdout = open('resemblyzer_diarization_output.txt', 'w')
 print(labelling)
 
 '''
@@ -68,6 +71,8 @@ total_time = labelling[-1][2]
 for k,v in user_time.items():
     percent = "{:.2f}".format((v/total_time) * 100)
     print(f'user {k}: {percent}%')
+
+sys.stdout.close()
 
 '''
     Visualize the dialog with a graph
