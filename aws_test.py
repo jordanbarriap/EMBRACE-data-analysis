@@ -55,7 +55,7 @@ def transcribe_file(job_name, file_uri, transcribe_client):
                 #     f"\t{job['TranscriptionJob']['Transcript']['TranscriptFileUri']}.")
                 response = urllib.request.urlopen(job['TranscriptionJob']['Transcript']['TranscriptFileUri'])
                 data = json.loads(response.read())
-                with open('aws_output.json', 'w', encoding='utf-8') as f:
+                with open('aws_output2.json', 'w', encoding='utf-8') as f:
                     json.dump(data, f, ensure_ascii=False, indent=4)
                 # text = data['results']['transcripts'][0]['transcript']
                 # print('======= below is the output =======')
@@ -68,6 +68,10 @@ def transcribe_file(job_name, file_uri, transcribe_client):
         time.sleep(10)
     
 def main():
+    '''
+        initiate the transcription work.
+        Change the file_url(in asw s3) and job_name every time we initiate a new job
+    '''
     # instantiate the AWS Transcribe service client
     transcribe_client = boto3.client(
         'transcribe',
@@ -75,8 +79,8 @@ def main():
         aws_secret_access_key=AWS_SECRET_KEY,
         region_name='us-east-2'
         )
-    file_uri = 's3://kyz1008/record-672279722.51811.wav'
-    transcribe_file('test', file_uri, transcribe_client)
+    file_uri = 's3://kyz1008/record-667269360.9571331.wav'
+    transcribe_file('audio_2', file_uri, transcribe_client)
 
 if __name__=='__main__':
     main()
