@@ -1,20 +1,30 @@
 # python==3.8
 
+from ast import increment_lineno
 import os
 from pyannote.audio import Pipeline
+from pyannote.core import Annotation, Segment, notebook
+from pyannote.core.notebook import repr_annotation
+
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+from io import BytesIO
+
 pipeline = Pipeline.from_pretrained("pyannote/speaker-diarization")
 
 # apply pretrained pipeline
 dir = os.path.dirname(os.getcwd())
-WAV_FILE = dir + '/audios/record-672279722.51811.wav'
+WAV_FILE = dir + '/audios/3_speakers.wav'
 diarization = pipeline(WAV_FILE)
 
 # print the result
+result = []
 for turn, _, speaker in diarization.itertracks(yield_label=True):
-    print(f"start={turn.start:.1f}s stop={turn.end:.1f}s speaker_{speaker}")
+    # print(f"start={turn.start:.1f}s stop={turn.end:.1f}s speaker_{speaker}")
+    result.append([float("{:.1f}".format(turn.start)), float("{:.1f}".format(turn.end)),speaker])
 
 '''
-    Below is the output(only diarization). It shows more speakers than it actually is, but it's at some point accurate! It successfully tells the child's voice apart,
+    Below is the output(only diarization) for the first real audio. It shows more speakers than it actually is, but it's at some point accurate! It successfully tells the child's voice apart,
     and it's capable to show the overlapping part.
 '''
 # start=0.5s stop=7.8s speaker_SPEAKER_00
@@ -43,3 +53,20 @@ for turn, _, speaker in diarization.itertracks(yield_label=True):
 # start=44.9s stop=45.0s speaker_SPEAKER_02
 # start=45.2s stop=49.5s speaker_SPEAKER_02
 # start=56.1s stop=57.0s speaker_SPEAKER_07
+
+# Producing annotation graph
+annotation = Annotation()
+for i in result:
+    annotation[Segment(i[0], i[1])] = i[2]
+
+# Get `png` data for `annotation`
+png_data = repr_annotation(annotation)
+# load raw data into a BytesIO container to wrap that data to make it work like a file obkect
+img = mpimg.imread(BytesIO(png_data))
+
+# Adjust the width
+notebook.width = 40
+plt.rcParams['figure.figsize'] = (notebook.width, 2)
+
+imgplot = plt.imshow(img)
+plt.show()
