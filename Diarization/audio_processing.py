@@ -12,7 +12,7 @@ import speech_recognition as sr
 
 # get the input file
 dir = os.path.dirname(os.getcwd())
-WAV_FILE = dir + '/audios/User-7_record-665439596.897068.wav'
+WAV_FILE = dir + '/audios/record-672279722.51811.wav'
 
 sample_rate, data = wavfile.read(WAV_FILE)
 # only works with mono audio, and assume our both channels record the same thing
@@ -78,7 +78,7 @@ def normalize_volume(norm_des_file, normalize_method):
 
 def main():
     # test noisereduce
-    nr_des_wav_file = '3_noisereduce.wav'
+    nr_des_wav_file = '1_noisereduce.wav'
     reduce_noise(nr_des_wav_file)
 
     # # test speech recognition's noise reduction
