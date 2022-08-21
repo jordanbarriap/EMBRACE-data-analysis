@@ -1,0 +1,393 @@
+{
+    "schemaVersion": 2.0,
+    "monologues": [
+        {
+            "speaker": {
+                "name": null,
+                "id": "speaker_2"
+            },
+            "terms": [
+                {
+                    "start": 0.1,
+                    "end": 0.6,
+                    "text": "why",
+                    "type": "WORD"
+                },
+                {
+                    "start": 0.64,
+                    "end": 0.82,
+                    "text": "it's",
+                    "type": "WORD"
+                },
+                {
+                    "start": 0.84,
+                    "end": 0.92,
+                    "text": "so",
+                    "type": "WORD"
+                },
+                {
+                    "start": 1.06,
+                    "end": 1.5,
+                    "text": "important",
+                    "type": "WORD"
+                }
+            ]
+        },
+        {
+            "speaker": {
+                "name": null,
+                "id": "speaker_1"
+            },
+            "terms": [
+                {
+                    "start": 1.6,
+                    "end": 1.7,
+                    "text": "that",
+                    "type": "WORD"
+                }
+            ]
+        },
+        {
+            "speaker": {
+                "name": null,
+                "id": "speaker_2"
+            },
+            "terms": [
+                {
+                    "start": 1.8,
+                    "end": 2.0,
+                    "text": "you",
+                    "type": "WORD"
+                },
+                {
+                    "start": 2.04,
+                    "end": 2.16,
+                    "text": "get",
+                    "type": "WORD"
+                },
+                {
+                    "start": 2.28,
+                    "end": 2.5,
+                    "text": "that",
+                    "type": "WORD"
+                },
+                {
+                    "start": 2.58,
+                    "end": 2.92,
+                    "text": "baby",
+                    "type": "WORD"
+                },
+                {
+                    "start": 2.98,
+                    "end": 3.18,
+                    "text": "right",
+                    "type": "WORD"
+                },
+                {
+                    "start": 3.22,
+                    "end": 3.72,
+                    "text": "away",
+                    "type": "WORD"
+                }
+            ]
+        },
+        {
+            "speaker": {
+                "name": null,
+                "id": "speaker_1"
+            },
+            "terms": [
+                {
+                    "start": 3.78,
+                    "end": 3.92,
+                    "text": "right",
+                    "type": "WORD"
+                }
+            ]
+        },
+        {
+            "speaker": {
+                "name": null,
+                "id": "speaker_2"
+            },
+            "terms": [
+                {
+                    "start": 4.5,
+                    "end": 4.68,
+                    "text": "soon",
+                    "type": "WORD"
+                },
+                {
+                    "start": 4.7,
+                    "end": 4.84,
+                    "text": "as",
+                    "type": "WORD"
+                },
+                {
+                    "start": 4.88,
+                    "end": 5.06,
+                    "text": "its",
+                    "type": "WORD"
+                },
+                {
+                    "start": 5.12,
+                    "end": 5.4,
+                    "text": "born",
+                    "type": "WORD"
+                },
+                {
+                    "start": 5.44,
+                    "end": 6.14,
+                    "text": "andyoi",
+                    "type": "WORD"
+                }
+            ]
+        },
+        {
+            "speaker": {
+                "name": null,
+                "id": "speaker_1"
+            },
+            "terms": [
+                {
+                    "start": 6.16,
+                    "end": 6.26,
+                    "text": "the",
+                    "type": "WORD"
+                },
+                {
+                    "start": 6.36,
+                    "end": 6.84,
+                    "text": "sanction",
+                    "type": "WORD"
+                },
+                {
+                    "start": 6.86,
+                    "end": 6.94,
+                    "text": "and",
+                    "type": "WORD"
+                },
+                {
+                    "start": 7.08,
+                    "end": 7.42,
+                    "text": "pattern",
+                    "type": "WORD"
+                },
+                {
+                    "start": 7.44,
+                    "end": 8.14,
+                    "text": "recognition",
+                    "type": "WORD"
+                }
+            ]
+        },
+        {
+            "speaker": {
+                "name": null,
+                "id": "speaker_0"
+            },
+            "terms": [
+                {
+                    "start": 8.22,
+                    "end": 8.3,
+                    "text": "are",
+                    "type": "WORD"
+                }
+            ]
+        },
+        {
+            "speaker": {
+                "name": null,
+                "id": "speaker_1"
+            },
+            "terms": [
+                {
+                    "start": 8.4,
+                    "end": 8.44,
+                    "text": "a",
+                    "type": "WORD"
+                },
+                {
+                    "start": 8.54,
+                    "end": 8.82,
+                    "text": "very",
+                    "type": "WORD"
+                },
+                {
+                    "start": 8.92,
+                    "end": 9.42,
+                    "text": "interesting",
+                    "type": "WORD"
+                },
+                {
+                    "start": 9.52,
+                    "end": 9.8,
+                    "text": "area",
+                    "type": "WORD"
+                },
+                {
+                    "start": 9.94,
+                    "end": 10.04,
+                    "text": "that",
+                    "type": "WORD"
+                }
+            ]
+        },
+        {
+            "speaker": {
+                "name": null,
+                "id": "speaker_2"
+            },
+            "terms": [
+                {
+                    "start": 10.16,
+                    "end": 10.24,
+                    "text": "has",
+                    "type": "WORD"
+                }
+            ]
+        },
+        {
+            "speaker": {
+                "name": null,
+                "id": "speaker_1"
+            },
+            "terms": [
+                {
+                    "start": 10.36,
+                    "end": 10.52,
+                    "text": "been",
+                    "type": "WORD"
+                },
+                {
+                    "start": 10.58,
+                    "end": 10.9,
+                    "text": "studied",
+                    "type": "WORD"
+                },
+                {
+                    "start": 11.04,
+                    "end": 11.12,
+                    "text": "and",
+                    "type": "WORD"
+                },
+                {
+                    "start": 11.22,
+                    "end": 11.62,
+                    "text": "involved",
+                    "type": "WORD"
+                },
+                {
+                    "start": 11.8,
+                    "end": 11.88,
+                    "text": "for",
+                    "type": "WORD"
+                },
+                {
+                    "start": 12.04,
+                    "end": 12.34,
+                    "text": "several",
+                    "type": "WORD"
+                }
+            ]
+        },
+        {
+            "speaker": {
+                "name": null,
+                "id": "speaker_0"
+            },
+            "terms": [
+                {
+                    "start": 12.44,
+                    "end": 13.8,
+                    "text": "decades",
+                    "type": "WORD"
+                },
+                {
+                    "start": 13.82,
+                    "end": 14.08,
+                    "text": "because",
+                    "type": "WORD"
+                },
+                {
+                    "start": 14.12,
+                    "end": 14.3,
+                    "text": "your",
+                    "type": "WORD"
+                },
+                {
+                    "start": 14.34,
+                    "end": 14.54,
+                    "text": "time",
+                    "type": "WORD"
+                },
+                {
+                    "start": 14.58,
+                    "end": 14.66,
+                    "text": "is",
+                    "type": "WORD"
+                },
+                {
+                    "start": 14.74,
+                    "end": 15.12,
+                    "text": "valuable",
+                    "type": "WORD"
+                },
+                {
+                    "start": 15.18,
+                    "end": 15.28,
+                    "text": "just",
+                    "type": "WORD"
+                },
+                {
+                    "start": 15.32,
+                    "end": 15.42,
+                    "text": "like",
+                    "type": "WORD"
+                },
+                {
+                    "start": 15.5,
+                    "end": 15.74,
+                    "text": "mine",
+                    "type": "WORD"
+                },
+                {
+                    "start": 15.86,
+                    "end": 16.3,
+                    "text": "so",
+                    "type": "WORD"
+                },
+                {
+                    "start": 16.34,
+                    "end": 16.48,
+                    "text": "when",
+                    "type": "WORD"
+                },
+                {
+                    "start": 16.54,
+                    "end": 16.58,
+                    "text": "i",
+                    "type": "WORD"
+                },
+                {
+                    "start": 16.74,
+                    "end": 16.96,
+                    "text": "find",
+                    "type": "WORD"
+                },
+                {
+                    "start": 17.02,
+                    "end": 17.22,
+                    "text": "one",
+                    "type": "WORD"
+                },
+                {
+                    "start": 17.22,
+                    "end": 17.38,
+                    "text": "th",
+                    "type": "WORD"
+                }
+            ]
+        }
+    ]
+}
