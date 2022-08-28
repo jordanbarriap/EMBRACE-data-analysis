@@ -1,0 +1,172 @@
+{
+    "status": "Success",
+    "session_id": "User-7_record-665439596.897068",
+    "transcription": "palabras especiales para los pr\u00f3ximos cap\u00ed m no que naturald fo en elea la m\u00ed s\u00ed no meternta tengo que m\u00e1s",
+    "speaker_count": 3,
+    "words": [
+        {
+            "word": "palabras",
+            "start_time": 7.04,
+            "end_time": 7.44,
+            "speaker_label": "speaker_1"
+        },
+        {
+            "word": "especiales",
+            "start_time": 7.72,
+            "end_time": 8.16,
+            "speaker_label": "speaker_2"
+        },
+        {
+            "word": "para",
+            "start_time": 8.48,
+            "end_time": 8.52,
+            "speaker_label": "speaker_2"
+        },
+        {
+            "word": "los",
+            "start_time": 8.68,
+            "end_time": 8.72,
+            "speaker_label": "speaker_2"
+        },
+        {
+            "word": "pr\u00f3ximos",
+            "start_time": 8.84,
+            "end_time": 9.28,
+            "speaker_label": "speaker_2"
+        },
+        {
+            "word": "cap\u00ed",
+            "start_time": 9.48,
+            "end_time": 9.68,
+            "speaker_label": "speaker_2"
+        },
+        {
+            "word": "m",
+            "start_time": 12.16,
+            "end_time": 12.2,
+            "speaker_label": "speaker_0"
+        },
+        {
+            "word": "no",
+            "start_time": 12.64,
+            "end_time": 12.68,
+            "speaker_label": "speaker_0"
+        },
+        {
+            "word": "que",
+            "start_time": 12.88,
+            "end_time": 12.92,
+            "speaker_label": "speaker_0"
+        },
+        {
+            "word": "naturald",
+            "start_time": 13.2,
+            "end_time": 13.4,
+            "speaker_label": "speaker_0"
+        },
+        {
+            "word": "fo",
+            "start_time": 13.56,
+            "end_time": 13.6,
+            "speaker_label": "speaker_1"
+        },
+        {
+            "word": "en",
+            "start_time": 13.92,
+            "end_time": 13.96,
+            "speaker_label": "speaker_1"
+        },
+        {
+            "word": "elea",
+            "start_time": 14.12,
+            "end_time": 23.8,
+            "speaker_label": "speaker_1"
+        },
+        {
+            "word": "la",
+            "start_time": 27.52,
+            "end_time": 27.56,
+            "speaker_label": "speaker_0"
+        },
+        {
+            "word": "m\u00ed",
+            "start_time": 27.68,
+            "end_time": 27.72,
+            "speaker_label": "speaker_1"
+        },
+        {
+            "word": "s\u00ed",
+            "start_time": 27.92,
+            "end_time": 27.96,
+            "speaker_label": "speaker_1"
+        },
+        {
+            "word": "no",
+            "start_time": 28.16,
+            "end_time": 28.2,
+            "speaker_label": "speaker_1"
+        },
+        {
+            "word": "meternta",
+            "start_time": 28.32,
+            "end_time": 28.68,
+            "speaker_label": "speaker_1"
+        },
+        {
+            "word": "tengo",
+            "start_time": 28.84,
+            "end_time": 28.88,
+            "speaker_label": "speaker_1"
+        },
+        {
+            "word": "que",
+            "start_time": 29.2,
+            "end_time": 29.24,
+            "speaker_label": "speaker_1"
+        },
+        {
+            "word": "m\u00e1s",
+            "start_time": 30.68,
+            "end_time": 30.72,
+            "speaker_label": "speaker_1"
+        }
+    ],
+    "sentences": [
+        {
+            "sentence": "palabras",
+            "start_time": 7.04,
+            "end_time": 7.44,
+            "speaker_label": "speaker_1"
+        },
+        {
+            "sentence": "especiales para los pr\u00f3ximos cap\u00ed",
+            "start_time": 7.72,
+            "end_time": 9.68,
+            "speaker_label": "speaker_2"
+        },
+        {
+            "sentence": "m no que naturald",
+            "start_time": 12.16,
+            "end_time": 13.4,
+            "speaker_label": "speaker_0"
+        },
+        {
+            "sentence": "fo en elea",
+            "start_time": 13.56,
+            "end_time": 23.8,
+            "speaker_label": "speaker_1"
+        },
+        {
+            "sentence": "la",
+            "start_time": 27.52,
+            "end_time": 27.56,
+            "speaker_label": "speaker_0"
+        },
+        {
+            "sentence": "m\u00ed s\u00ed no meternta tengo que m\u00e1s",
+            "start_time": 27.68,
+            "end_time": 30.72,
+            "speaker_label": "speaker_1"
+        }
+    ]
+}

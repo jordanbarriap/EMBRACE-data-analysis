@@ -1,0 +1,179 @@
+{
+    "schemaVersion": 2.0,
+    "monologues": [
+        {
+            "speaker": {
+                "name": null,
+                "id": "speaker_1"
+            },
+            "terms": [
+                {
+                    "start": 7.04,
+                    "end": 7.44,
+                    "text": "palabras",
+                    "type": "WORD"
+                }
+            ]
+        },
+        {
+            "speaker": {
+                "name": null,
+                "id": "speaker_2"
+            },
+            "terms": [
+                {
+                    "start": 7.72,
+                    "end": 8.16,
+                    "text": "especiales",
+                    "type": "WORD"
+                },
+                {
+                    "start": 8.48,
+                    "end": 8.52,
+                    "text": "para",
+                    "type": "WORD"
+                },
+                {
+                    "start": 8.68,
+                    "end": 8.72,
+                    "text": "los",
+                    "type": "WORD"
+                },
+                {
+                    "start": 8.84,
+                    "end": 9.28,
+                    "text": "pr\u00f3ximos",
+                    "type": "WORD"
+                },
+                {
+                    "start": 9.48,
+                    "end": 9.68,
+                    "text": "cap\u00ed",
+                    "type": "WORD"
+                }
+            ]
+        },
+        {
+            "speaker": {
+                "name": null,
+                "id": "speaker_0"
+            },
+            "terms": [
+                {
+                    "start": 12.16,
+                    "end": 12.2,
+                    "text": "m",
+                    "type": "WORD"
+                },
+                {
+                    "start": 12.64,
+                    "end": 12.68,
+                    "text": "no",
+                    "type": "WORD"
+                },
+                {
+                    "start": 12.88,
+                    "end": 12.92,
+                    "text": "que",
+                    "type": "WORD"
+                },
+                {
+                    "start": 13.2,
+                    "end": 13.4,
+                    "text": "naturald",
+                    "type": "WORD"
+                }
+            ]
+        },
+        {
+            "speaker": {
+                "name": null,
+                "id": "speaker_1"
+            },
+            "terms": [
+                {
+                    "start": 13.56,
+                    "end": 13.6,
+                    "text": "fo",
+                    "type": "WORD"
+                },
+                {
+                    "start": 13.92,
+                    "end": 13.96,
+                    "text": "en",
+                    "type": "WORD"
+                },
+                {
+                    "start": 14.12,
+                    "end": 23.8,
+                    "text": "elea",
+                    "type": "WORD"
+                }
+            ]
+        },
+        {
+            "speaker": {
+                "name": null,
+                "id": "speaker_0"
+            },
+            "terms": [
+                {
+                    "start": 27.52,
+                    "end": 27.56,
+                    "text": "la",
+                    "type": "WORD"
+                }
+            ]
+        },
+        {
+            "speaker": {
+                "name": null,
+                "id": "speaker_1"
+            },
+            "terms": [
+                {
+                    "start": 27.68,
+                    "end": 27.72,
+                    "text": "m\u00ed",
+                    "type": "WORD"
+                },
+                {
+                    "start": 27.92,
+                    "end": 27.96,
+                    "text": "s\u00ed",
+                    "type": "WORD"
+                },
+                {
+                    "start": 28.16,
+                    "end": 28.2,
+                    "text": "no",
+                    "type": "WORD"
+                },
+                {
+                    "start": 28.32,
+                    "end": 28.68,
+                    "text": "meternta",
+                    "type": "WORD"
+                },
+                {
+                    "start": 28.84,
+                    "end": 28.88,
+                    "text": "tengo",
+                    "type": "WORD"
+                },
+                {
+                    "start": 29.2,
+                    "end": 29.24,
+                    "text": "que",
+                    "type": "WORD"
+                },
+                {
+                    "start": 30.68,
+                    "end": 30.72,
+                    "text": "m\u00e1s",
+                    "type": "WORD"
+                }
+            ]
+        }
+    ]
+}
