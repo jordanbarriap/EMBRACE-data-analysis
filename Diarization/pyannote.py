@@ -3,7 +3,6 @@
 import os
 from pyannote.audio import Pipeline
 from pyannote.core import Annotation, Segment, notebook
-# from pyannote.core.notebook import repr_annotation
 
 import matplotlib.pyplot as plt
 
@@ -11,7 +10,7 @@ pipeline = Pipeline.from_pretrained("pyannote/speaker-diarization")
 
 # apply pretrained pipeline
 dir = os.path.dirname(os.getcwd())
-WAV_FILE = '1_noisereduce.wav'
+WAV_FILE = os.path.join(dir, 'audios/enh_norm_record-672279722.51811_enhanced.wav')
 diarization = pipeline(WAV_FILE)
 
 # print the result
@@ -33,4 +32,4 @@ figure.set_size_inches(30,4)
 end_time = result[-1][1]
 ax.set_xticks(np.arange(0, math.ceil(end_time),5))
 notebook.plot_annotation(annotation, ax=ax, time=True, legend=True)
-figure.savefig('Figure_1_reduce.png')
+figure.savefig('Figure_1_enh+norm.png')

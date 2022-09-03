@@ -12,7 +12,8 @@ import speech_recognition as sr
 
 # get the input file
 dir = os.path.dirname(os.getcwd())
-WAV_FILE = dir + '/audios/record-672279722.51811.wav'
+WAV_FILE = os.path.join(dir, 'audios/record-672279722.51811_enhanced.wav')
+filename_prefix = os.path.splitext(os.path.basename(WAV_FILE))[0]
 
 sample_rate, data = wavfile.read(WAV_FILE)
 # only works with mono audio, and assume our both channels record the same thing
@@ -61,34 +62,36 @@ def normalize_volume(norm_des_file, normalize_method):
     # dBFS = audio.dBFS  # get the dBFS for this entire audio
 
     if normalize_method == 'max':
-        # scale the whole audio to the max amplitude.
+        # scale the whole audio to the max decibel within this audio.
         _sound = AudioSegment.from_file(WAV_FILE, "wav")
         sound = effects.normalize(_sound)
+        print(sound.dBFS)
         sound.export(norm_des_file, format="wav")
 
     if normalize_method == 'manual':
-        # another approach: manually set the amplitude
+        # another approach: manually set the decibel
         def match_target_amplitude(sound, target_dBFS):
             change_in_dBFS = target_dBFS - sound.dBFS
             return sound.apply_gain(change_in_dBFS)
 
         sound = AudioSegment.from_file(WAV_FILE, "wav")
-        normalized_sound = match_target_amplitude(sound, -10.0)
+        normalized_sound = match_target_amplitude(sound, -5.0)
         normalized_sound.export(norm_des_file, format="wav")
 
 def main():
-    # test noisereduce
-    nr_des_wav_file = '1_noisereduce.wav'
-    reduce_noise(nr_des_wav_file)
+    # # test noisereduce
+    # nr_des_wav_file = '1_noisereduce.wav'
+    # reduce_noise(nr_des_wav_file)
 
     # # test speech recognition's noise reduction
     # sr_des_wav_file = '2_speechrecognition.wav'
     # speech_recognition(sr_des_wav_file)
 
-    # # Normalize volume
+    # Normalize volume
     # norm_des_file = '2_reduce_normalize_volume.wav'
-    # normalize_method = 'max'
-    # normalize_volume(norm_des_file, normalize_method)
+    norm_des_file = os.path.join(dir, f'audios/enh_norm_{filename_prefix}.wav')
+    normalize_method = 'manual'
+    normalize_volume(norm_des_file, normalize_method)
 
 if __name__=='__main__':
     main()
