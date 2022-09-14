@@ -12,7 +12,7 @@ authenticator = IAMAuthenticator(api_key)
 stt = SpeechToTextV1(authenticator=authenticator)
 stt.set_service_url(url)
 
-file_name = 'audios/record-667269360.9571331.wav'
+file_name = 'audios/enh_norm_record-672279722.51811_enhanced.wav'
 
 # recognizer = sr.Recognizer()
 # recognizer.energy_threshold = 4000
@@ -25,8 +25,11 @@ file_name = 'audios/record-667269360.9571331.wav'
 #     recognizer.adjust_for_ambient_noise(source, duration = 0.5)
 #     audio_data = recognizer.record(source)
 
+# Recognition
 with open(file_name, 'rb') as f:
     res = stt.recognize(audio=f, content_type='audio/wav', speaker_labels=True, model='es-LA_Telephony', background_audio_suppression = 0.4).get_result()
 
-with open('ibm_transcript_noise_suppression1.json', 'w', encoding='utf-8') as f:
+# Print the result as json
+output_file = 'espnet_enh_norm_1.json'
+with open(output_file, 'w', encoding='utf-8') as f:
     json.dump(res, f, ensure_ascii=False, indent=4)
