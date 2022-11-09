@@ -6,13 +6,16 @@ from pyannote.core import Annotation, Segment, notebook
 
 import matplotlib.pyplot as plt
 
+ACCESS_TOKEN= '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'
+
 def diarization(WAV_FILE, saved_figure_name):
     '''
     Parameters:
     WAV_FILE: the path of the audio file
     SAVE_FIGURE_NAME: the desired name of the saved figure
     '''
-    pipeline = Pipeline.from_pretrained("pyannote/speaker-diarization")
+    pipeline = Pipeline.from_pretrained("pyannote/speaker-diarization@2.1",
+                                    use_auth_token=ACCESS_TOKEN)
 
     diarization = pipeline(WAV_FILE)
 
@@ -41,7 +44,7 @@ def diarization(WAV_FILE, saved_figure_name):
 if __name__ == "__main__":
     
     dir = os.path.dirname(os.getcwd())
-    WAV_FILE = os.path.join(dir, 'audios/enh_norm_record-672279722.51811_enhanced.wav')
+    WAV_FILE = os.path.join(dir, 'audios/par007_ecord-673758082.558921.wav')
 
-    saved_figure_name = 'Figure_1_enh+norm.png'
+    saved_figure_name = 'asu_1.png'
     diarization(WAV_FILE, saved_figure_name)
