@@ -2,18 +2,18 @@
 import os
 import sys
 
-txt_path = ('./') # 需要转化的txt文件夹路径 
-xml_path = ('E:\Desktop\\data_txt\\xml_done/') # 输出文件夹路径
+txt_path = ('./') 
+xml_path = ('E:\Desktop\\data_txt\\xml_done/') 
 
 def txt_to_xml(indir,outdir): 
-    files_list = os.listdir(indir) # 读取文件夹下的文件列表 
+    files_list = os.listdir(indir) 
     for filename in files_list: 
-        used_name = os.path.splitext(filename) # 分离文件名与后缀名 
-        if used_name[1] == '.txt': # 根据需要的后缀名修改文件类型，不同的类型剔除 
+        used_name = os.path.splitext(filename) 
+        if used_name[1] == '.txt'
             new_name = used_name[0] + '.xml' 
             os.rename(filename,new_name ) 
             
-    print("文件%s从重命名成功，新的文件名为%s"%(filename, new_name)) 
+    print((filename, new_name)) 
 
 print('Successfully converted .txt to .xml')
 
