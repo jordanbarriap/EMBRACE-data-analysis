@@ -1,0 +1,59 @@
+Selection,Action,Concrete,Abstract,Relational,ReaderInProgress,LanguageInProgress
+Button,Start Session,,,,,
+PDashboardEvent,No_User_Action,,,,,
+open_modal,Page Loading,,,,,
+time,19:54:58,,,,,
+message_name,Page Loading,,,,,
+button_clicked,"?key, entiendo!",,,,,
+toggle_language,ES,,,,,
+time,19:54:59,,,,,
+time,19:56:13,,,,,
+toggle_language,EN,,,,,
+time,22:22:43,,,,,
+copying_participant_data,ds006.json,,,,,
+time,17:17:32,,,,,
+time,17:17:41,,,,,
+time,17:18:08,,,,,
+time,17:18:11,,,,,
+time,17:20:34,,,,,
+open_modal,Loading book page ...... ,,,,,
+time,17:21:01,,,,,
+PDashboardEvent,No_User_Action,,,,parent,ES
+button_clicked,Read,,,,parent,ES
+toggle_language,ES,,,,parent,ES
+time,17:21:01,,,,parent,ES
+Button,Load Chapter,,,,parent,ES
+Recorder,Recorder_Stopped_Overlay_Toggle,,,,no reader,ES
+Recorder,Recording_Started,,,,no reader,ES
+Recorder,Recorder_Initialized,,,,no reader,ES
+Recorder,Recorder_Started,,,,no reader,ES
+Page,Load Page,,,,no reader,ES
+Chapter_Read_Count,Initiated Chapter_Read_Count,,,,parent,ES
+Sentence,Load Sentence,,,,parent,ES
+TappedLocation,Single Finger Tap,,,,parent,ES
+Word,Tap Word,,,,parent,ES
+Vocabulary Skill,Updated Skill Value,,,,parent,ES
+Audio,Play Word with Definition,,,,parent,ES
+Recorder,Recorder_Stopped_Overlay,,,,parent,ES
+Button,Press Next,,,,parent,ES
+Page,Load Page,,,,parent,ES
+Step,Load Step,,,,parent,ES
+Recorder,Recorder_Stopped_Overlay_Toggle,,,,parent,ES
+Recorder,Recorder_Initialized,,,,parent,ES
+Recorder,Recording_Started,,,,parent,ES
+Image,Group Objects,,,,parent,ES
+Manipulation Activity,Completed Manipulation Activity,,,,parent,ES
+chapterCountIncrement,Completed Chapter,,,,parent,ES
+Recorder,Recording_Stopped,,,,parent,ES
+Recorder,ExitStory,,,,parent,ES
+Button,Return to Library,,,,parent,ES
+NumberOfQuestions,Return_to_Chapter_View,0,0,0,parent,ES
+PDashboardEvent,No_User_Action,0,0,0,parent,ES
+Button,Show Books,0,0,0,parent,ES
+open_modal,Page Loading,0,0,0,parent,ES
+time,17:26:48,0,0,0,parent,ES
+time,17:26:49,0,0,0,parent,ES
+message_name,Page Loading,0,0,0,parent,ES
+button_clicked,"?key, entiendo!",0,0,0,parent,ES
+toggle_language,ES,0,0,0,parent,ES
+time,17:26:52,0,0,0,parent,ES

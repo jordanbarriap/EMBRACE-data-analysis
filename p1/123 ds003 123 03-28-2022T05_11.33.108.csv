@@ -1,0 +1,10 @@
+Selection,Action,Concrete,Abstract,Relational,ReaderInProgress,LanguageInProgress
+Button,Start Session,,,,,
+PDashboardEvent,No_User_Action,,,,,
+copying_participant_data,ds003.json,,,,,
+open_modal,Page Loading,,,,,
+time,0:11:33,,,,,
+message_name,Page Loading,,,,,
+button_clicked,"?Okey, entiendo!",,,,,
+toggle_language,ES,,,,,
+time,0:11:36,,,,,

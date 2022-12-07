@@ -1,0 +1,12 @@
+Selection,Action,Concrete,Abstract,Relational,ReaderInProgress,LanguageInProgress
+Button,Start Session,,,,,
+PDashboardEvent,No_User_Action,,,,,
+open_modal,Page Loading,,,,,
+time,19:54:58,,,,,
+message_name,Page Loading,,,,,
+button_clicked,"?Okey, entiendo!",,,,,
+toggle_language,ES,,,,,
+time,19:54:59,,,,,
+time,19:56:13,,,,,
+toggle_language,EN,,,,,
+time,22:22:43,,,,,

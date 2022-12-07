@@ -1,0 +1,91 @@
+Selection,Action,Concrete,Abstract,Relational,ReaderInProgress,LanguageInProgress
+Button,Start Session,,,,,
+PDashboardEvent,No_User_Action,,,,,
+copying_participant_data,ds03.json,,,,,
+open_modal,Page Loading,,,,,
+time,3:16:37,,,,,
+message_name,Page Loading,,,,,
+button_clicked,"?key, entiendo!",,,,,
+toggle_language,ES,,,,,
+time,3:16:39,,,,,
+time,3:16:57,,,,,
+time,3:17:01,,,,,
+time,3:17:43,,,,,
+message_name,Fourth Reading,,,,,
+button_clicked,Okey,,,,,
+time,3:17:44,,,,,
+open_modal,Loading book page ...... ,,,,,
+time,3:17:47,,,,,
+PDashboardEvent,No_User_Action,,,,parent,ES
+button_clicked,Read,,,,parent,ES
+toggle_language,ES,,,,parent,ES
+time,3:17:47,,,,parent,ES
+Button,Load Chapter,,,,parent,ES
+Recorder,Recorder_Stopped_Overlay_Toggle,,,,no reader,ES
+Recorder,Recording_Started,,,,no reader,ES
+Recorder,Recorder_Initialized,,,,no reader,ES
+Recorder,Recorder_Started,,,,no reader,ES
+Page,Load Page,,,,no reader,ES
+Chapter_Read_Count,Initiated Chapter_Read_Count,,,,parent,ES
+Sentence,Load Sentence,,,,parent,ES
+Step,Load Step,,,,parent,ES
+TappedLocation,Single Finger Tap,,,,parent,ES
+Word,Tap Word,,,,parent,ES
+Vocabulary Skill,Updated Skill Value,,,,parent,ES
+Audio,Play Word,,,,parent,ES
+Recorder,Recorder_Stopped_Overlay,,,,parent,ES
+Button,Press Next,,,,parent,ES
+Button,Press Next When Disabled,,,,parent,ES
+Manipulation Activity,Completed Manipulation Activity,,,,parent,ES
+chapterCountIncrement,Completed Chapter,,,,parent,ES
+Recorder,Recording_Stopped,,,,parent,ES
+Recorder,ExitStory,,,,parent,ES
+Button,Return to Library,,,,parent,ES
+NumberOfQuestions,Return_to_Chapter_View,0,0,0,parent,ES
+PDashboardEvent,No_User_Action,0,0,0,parent,ES
+Button,Load Chapter,0,0,0,parent,ES
+Recorder,Recorder_Stopped_Overlay_Toggle,0,0,0,no reader,ES
+Recorder,Recording_Started,0,0,0,no reader,ES
+Recorder,Recorder_Initialized,0,0,0,no reader,ES
+Recorder,Recorder_Started,0,0,0,no reader,ES
+Page,Load Page,0,0,0,no reader,ES
+Chapter_Read_Count,Initiated Chapter_Read_Count,0,0,0,parent,ES
+Sentence,Load Sentence,0,0,0,parent,ES
+Step,Load Step,0,0,0,parent,ES
+Image,Group Objects,0,0,0,parent,ES
+TappedLocation,Single Finger Tap,0,0,0,parent,ES
+Word,Tap Word,0,0,0,parent,ES
+Vocabulary Skill,Updated Skill Value,0,0,0,parent,ES
+Audio,Play Word,0,0,0,parent,ES
+Recorder,Recorder_Stopped_Overlay,0,0,0,parent,ES
+Button,Press Next,0,0,0,parent,ES
+Page,Load Page,0,0,0,parent,ES
+Manipulation Activity,Completed Manipulation Activity,0,0,0,parent,ES
+chapterCountIncrement,Completed Chapter,0,0,0,parent,ES
+Recorder,Recording_Stopped,0,0,0,parent,ES
+Recorder,ExitStory,0,0,0,parent,ES
+Button,Return to Library,0,0,0,parent,ES
+Button,Press Next When Disabled,0,0,0,parent,ES
+AllChaptersComplete,Book Chapters Read,0,0,0,parent,ES
+MarkedReaderLanguageComplete,Reader Read Once in Language,0,0,0,parent,ES
+bookReadingCompleted,Completed Book,0,0,0,parent,ES
+Recorder,Recorder_Stopped_Overlay_Toggle,0,0,0,parent,ES
+Retell Interface,Navigate_Show_Retell_Interface,0,0,0,parent,ES
+Retell Interface,ShowRetell_Recording_Started,0,0,0,parent,ES
+Retell Interface,Retell_Text_Loaded,0,0,0,parent,ES
+Retell Interface,Retell_Info_Loaded,0,0,0,parent,ES
+Retell Interface,Recording_Stopped,0,0,0,parent,ES
+Retell Interface,Exit_Retell_Interface,0,0,0,parent,ES
+Button,Show Books,0,0,0,parent,ES
+open_modal,Page Loading,0,0,0,parent,ES
+time,3:43:16,0,0,0,parent,ES
+message_name,Page Loading,0,0,0,parent,ES
+button_clicked,"?key, entiendo!",0,0,0,parent,ES
+toggle_language,ES,0,0,0,parent,ES
+time,3:43:18,0,0,0,parent,ES
+time,3:36:54,0,0,0,parent,ES
+open_modal,Loading book page ...... ,0,0,0,parent,ES
+time,3:37:00,0,0,0,parent,ES
+button_clicked,Read,0,0,0,parent,ES
+toggle_language,EN,0,0,0,parent,ES
+PDashboardEvent,No_User_Action,0,0,0,child,ES

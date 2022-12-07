@@ -1,0 +1,100 @@
+Selection,Action,Concrete,Abstract,Relational,ReaderInProgress,LanguageInProgress
+Button,Start Session,,,,,
+PDashboardEvent,No_User_Action,,,,,
+open_modal,Page Loading,,,,,
+time,22:22:54,,,,,
+message_name,Page Loading,,,,,
+button_clicked,"¡Okey, entiendo!",,,,,
+toggle_language,ES,,,,,
+time,22:22:56,,,,,
+PDashboardEvent,No_User_Action,,,,child,EN
+open_modal,Loading book page ...... ,,,,child,EN
+time,22:23:01,,,,child,EN
+message_name,Welcome Back Screen,,,,child,EN
+button_clicked,"Sí, continuar leyendo",,,,child,EN
+toggle_language,ES,,,,child,EN
+Button,Load Chapter,,,,child,EN
+Recorder,Recorder_Stopped_Overlay_Toggle,,,,no reader,EN
+Recorder,Recording_Started,,,,no reader,EN
+Recorder,Recorder_Initialized,,,,no reader,EN
+Recorder,Recorder_Started,,,,no reader,EN
+Page,Load Page,,,,no reader,EN
+Chapter_Read_Count,Initiated Chapter_Read_Count,,,,child,EN
+Sentence,Load Sentence,,,,child,EN
+Step,Load Step,,,,child,EN
+Image,Group Objects,,,,child,EN
+Button,Press Next,,,,child,EN
+Page,Load Page,,,,child,EN
+Recorder,Recorder_Stopped_Overlay,,,,child,EN
+Recorder,Recorder_Stopped_Overlay_Toggle,,,,child,EN
+Recorder,Recorder_Initialized,,,,child,EN
+Recorder,Recording_Started,,,,child,EN
+Manipulation Activity,Completed Manipulation Activity,,,,child,EN
+chapterCountIncrement,Completed Chapter,,,,child,EN
+AllChaptersComplete,Book Chapters Read,,,,child,EN
+MarkedReaderLanguageComplete,Reader Read Once in Language,,,,child,EN
+bookReadingCompleted,Completed Book,,,,child,EN
+Recorder,Recording_Stopped,,,,child,EN
+Retell Interface,Navigate_Show_Retell_Interface,,,,child,EN
+Retell Interface,ShowRetell_Recording_Started,,,,child,EN
+Retell Interface,Retell_Text_Loaded,,,,child,EN
+Retell Interface,Retell_Info_Loaded,,,,child,EN
+Recorder,ExitStory,,,,child,EN
+Retell Interface,Recording_Stopped,,,,child,EN
+Retell Interface,Exit_Retell_Interface,,,,child,EN
+Button,Return to Library,,,,child,EN
+NumberOfQuestions,Return_to_Chapter_View,0,0,0,child,EN
+Button,Show Books,0,0,0,child,EN
+PDashboardEvent,No_User_Action,0,0,0,child,EN
+open_modal,Page Loading,0,0,0,child,EN
+time,22:26:00,0,0,0,child,EN
+message_name,Page Loading,0,0,0,child,EN
+button_clicked,"¡Okey, entiendo!",0,0,0,child,EN
+toggle_language,ES,0,0,0,child,EN
+time,22:26:02,0,0,0,child,EN
+time,22:26:13,0,0,0,child,EN
+time,22:27:41,0,0,0,child,EN
+open_modal,Loading book page ...... ,0,0,0,child,EN
+time,22:27:52,0,0,0,child,EN
+PDashboardEvent,No_User_Action,0,0,0,parent,ES
+button_clicked,Read,0,0,0,parent,ES
+toggle_language,ES,0,0,0,parent,ES
+time,22:27:52,0,0,0,parent,ES
+Button,Load Chapter,0,0,0,parent,ES
+Recorder,Recorder_Stopped_Overlay_Toggle,0,0,0,no reader,ES
+Recorder,Recording_Started,0,0,0,no reader,ES
+Recorder,Recorder_Initialized,0,0,0,no reader,ES
+Recorder,Recorder_Started,0,0,0,no reader,ES
+Page,Load Page,0,0,0,no reader,ES
+Chapter_Read_Count,Initiated Chapter_Read_Count,0,0,0,parent,ES
+Sentence,Load Sentence,0,0,0,parent,ES
+Step,Load Step,0,0,0,parent,ES
+Button,Press Next,0,0,0,parent,ES
+Recorder,Recorder_Stopped_Overlay,0,0,0,parent,ES
+Recorder,Recorder_Stopped_Overlay_Toggle,0,0,0,parent,ES
+Recorder,Recorder_Initialized,0,0,0,parent,ES
+Recorder,Recording_Started,0,0,0,parent,ES
+Manipulation Activity,Completed Manipulation Activity,0,0,0,parent,ES
+chapterCountIncrement,Completed Chapter,0,0,0,parent,ES
+Recorder,Recording_Stopped,0,0,0,parent,ES
+Recorder,ExitStory,0,0,0,parent,ES
+Button,Return to Library,0,0,0,parent,ES
+NumberOfQuestions,Return_to_Chapter_View,0,0,0,parent,ES
+Image,Group Objects,0,0,0,parent,ES
+TappedLocation,Single Finger Tap,0,0,0,parent,ES
+Page,Load Page,0,0,0,parent,ES
+Button,Press Next When Disabled,0,0,0,parent,ES
+AllChaptersComplete,Book Chapters Read,0,0,0,parent,ES
+MarkedReaderLanguageComplete,Reader Read Once in Language,0,0,0,parent,ES
+bookReadingCompleted,Completed Book,0,0,0,parent,ES
+Button,Show Books,0,0,0,parent,ES
+open_modal,Page Loading,0,0,0,parent,ES
+time,22:41:41,0,0,0,parent,ES
+time,22:41:42,0,0,0,parent,ES
+message_name,Page Loading,0,0,0,parent,ES
+button_clicked,"¡Okey, entiendo!",0,0,0,parent,ES
+time,22:41:44,0,0,0,parent,ES
+time,22:42:09,0,0,0,parent,ES
+open_modal,Loading book page ...... ,0,0,0,parent,ES
+time,22:42:12,0,0,0,parent,ES
+time,22:42:27,0,0,0,child,EN
