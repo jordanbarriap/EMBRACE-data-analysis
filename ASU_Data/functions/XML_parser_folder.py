@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+import os
 
 class question:
     def __init__(self, name, count):
@@ -11,13 +12,8 @@ class question:
         """
         self.count += num
 
-# create three question objects
-concrete = question('Concrete', 0)
-abstract = question('Abstract', 0)
-relational = question('Relational', 0)
-q_types = [concrete, abstract, relational]
 
-def count_questions(q_type):
+def count_questions(root, q_type):
     """
         Count number of questions for each question type in each file
     """
@@ -36,15 +32,36 @@ def count_questions(q_type):
             print(f"{q_type.name} questions: {element.text}")
     return q_type.count
 
+def process_xml_file():
+    # dealing with each xml file under this folder
+    for xml_file in dir_list:
+        print("NEW FILE")
+        tree = ET.parse(dir_path + '/' +xml_file)
+        root = tree.getroot()
+        
+        # create three question objects
+        concrete = question('Concrete', 0)
+        abstract = question('Abstract', 0)
+        relational = question('Relational', 0)
+        q_types = [concrete, abstract, relational]
+
+        result_list = []
+        for q_type in q_types:
+            result_list.append(count_questions(root, q_type))
+
+        print('====================================')
+        print(result_list)
+
 if __name__=='__main__': 
+
+    dir_path = 'ASU_Data/par 001'
+    dir_list = [file for file in os.listdir(dir_path) if os.path.splitext(file)[1] == '.xml']
+
+    num_file = len(dir_list)
     
-    xml_path = 'ASU_Data/par 001/x par001 x 10-16-2021T05_10.40.862.xml'
-    tree = ET.parse(xml_path)
-    root = tree.getroot()
+    # aggregation counters
+    total_concrete = 0
+    total_abstract = 0
+    total_relational = 0
 
-    result_list = []
-    for q_type in q_types:
-        result_list.append(count_questions(q_type))
-
-    print('====================================')
-    print(result_list)
+    process_xml_file()
