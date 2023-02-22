@@ -1,67 +1,55 @@
-import xml.etree.ElementTree as ET
+from lxml import etree
 import os
 
 class question:
     def __init__(self, name, count):
         self.name = name
         self.count = count
-    
-    def increment(self, num):
-        """
-            a helper function to increment the number of each type of function
-        """
-        self.count += num
 
+def count_question(root, q_type):
+    '''
+        parameter(s):  a quesetion object 'q_type'
+        Modifying the count attribute directly
+    '''
+    name = q_type.name
+    for i in root.findall('.//Action'):
+        if i.text == f'Tap {name} ({name[0]}) Button':
+            q_type.count += 1
+        elif i.text == f'Decrement {name} ({name[0]}) Count':
+            q_type.count -= 1
 
-def count_questions(root, q_type):
-    """
-        Count number of questions for each question type in each file
-    """
-    print("---------------------------------")
-    # find all the Abstract elements
-    for element in root.iter(q_type.name):
-        # there are sub elements
-        if (len(element) > 0):
-            for sub_element in element:
-                q_type.increment(int(sub_element.text))
-                print(f"{q_type.name} questions in {sub_element.tag}: {sub_element.text}")
-        # there is no sub element
-        else:
-            # directly grab the number of this type of question
-            q_type.increment(int(element.text))
-            print(f"{q_type.name} questions: {element.text}")
-    return q_type.count
+def process_xml_file(q_types):
+    '''
+        Dealing with each xml file under this folder
+    '''
+    # A list containing 3 counters for CAR questions
+    aggregate_count = []
 
-def process_xml_file():
-    # dealing with each xml file under this folder
     for xml_file in dir_list:
-        print("NEW FILE")
-        tree = ET.parse(dir_path + '/' +xml_file)
+        # parse each xml file
+        tree = etree.parse(dir_path + '/' + xml_file)
         root = tree.getroot()
         
-        # create three question objects
-        concrete = question('Concrete', 0)
-        abstract = question('Abstract', 0)
-        relational = question('Relational', 0)
-        q_types = [concrete, abstract, relational]
-
-        result_list = []
+        # Modify the counter of each type of question
         for q_type in q_types:
-            result_list.append(count_questions(root, q_type))
+            count_question(root, q_type)
+        
+    for q_type in q_types:
+        aggregate_count.append(q_type.count)
+    return aggregate_count
 
-        print('====================================')
-        print(result_list)
 
 if __name__=='__main__': 
 
-    dir_path = 'ASU_Data/par 001'
+    dir_path = 'ASU_Data/par 007'
     dir_list = [file for file in os.listdir(dir_path) if os.path.splitext(file)[1] == '.xml']
 
-    num_file = len(dir_list)
-    
-    # aggregation counters
-    total_concrete = 0
-    total_abstract = 0
-    total_relational = 0
+    # create three question objects for this user (count all the files)
+    concrete = question('Concrete', 0)
+    abstract = question('Abstract', 0)
+    relational = question('Relational', 0)
+    q_types = [concrete, abstract, relational]
 
-    process_xml_file()
+    # each file will modify the global counter
+    aggregate_count = process_xml_file(q_types)
+    print(aggregate_count)

@@ -3,7 +3,7 @@
 '''
 import os
 
-dir_path = 'ASU_Data/par 001/'
+dir_path = 'ASU_Data/par 007/'
 txt_path = 'ASU_Data/par 001/x par001 x 10-16-2021T05_10.40.862.txt'
 
 # Batch convert txt files under a directory
