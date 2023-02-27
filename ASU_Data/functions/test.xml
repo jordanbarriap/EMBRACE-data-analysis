@@ -1,0 +1,861 @@
+
+<QuestionTypeCounts>
+   <Concrete>
+   <English> 0 </English>
+   <Spanish> 0 </Spanish>
+</Concrete>
+   <Abstract>
+   <English> 0 </English>
+   <Spanish> 0 </Spanish>
+</Abstract>
+   <Relational>
+   <English> 0 </English>
+   <Spanish> 0 </Spanish>
+</Relational>
+</QuestionTypeCounts>
+
+
+<QuestionTypeCounts>
+   <Concrete>
+   <English> 0 </English>
+   <Spanish> 0 </Spanish>
+</Concrete>
+   <Abstract>
+   <English> 0 </English>
+   <Spanish> 0 </Spanish>
+</Abstract>
+   <Relational>
+   <English> 0 </English>
+   <Spanish> 0 </Spanish>
+</Relational>
+</QuestionTypeCounts>
+
+
+<Input>
+  <Concrete> 3  </Concrete>
+  <Abstract> 3  </Abstract>
+  <Relational> 3  </Relational>
+  <ReaderInProgress> child  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 7  </Concrete>
+  <Abstract> 7  </Abstract>
+  <Relational> 7  </Relational>
+  <ReaderInProgress> child  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 10  </Concrete>
+  <Abstract> 10  </Abstract>
+  <Relational> 10  </Relational>
+  <ReaderInProgress> child  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+  <Action> Decrement Relational (R) Count  </Action>
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Tap Relational (R) Button  </Action>
+
+<Input>
+  <Concrete> 14  </Concrete>
+  <Abstract> 14  </Abstract>
+  <Relational> 15  </Relational>
+  <ReaderInProgress> child  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+  <Action> Tap Relational (R) Button  </Action>
+
+<Input>
+  <Concrete> 18  </Concrete>
+  <Abstract> 18  </Abstract>
+  <Relational> 20  </Relational>
+  <ReaderInProgress> child  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+
+<QuestionTypeCounts>
+   <Concrete>
+   <English> 18 </English>
+   <Spanish> 0 </Spanish>
+</Concrete>
+   <Abstract>
+   <English> 18 </English>
+   <Spanish> 0 </Spanish>
+</Abstract>
+   <Relational>
+   <English> 20 </English>
+   <Spanish> 0 </Spanish>
+</Relational>
+</QuestionTypeCounts>
+
+
+<QuestionTypeCounts>
+   <Concrete>
+   <English> 18 </English>
+   <Spanish> 0 </Spanish>
+</Concrete>
+   <Abstract>
+   <English> 18 </English>
+   <Spanish> 0 </Spanish>
+</Abstract>
+   <Relational>
+   <English> 20 </English>
+   <Spanish> 0 </Spanish>
+</Relational>
+</QuestionTypeCounts>
+
+
+<QuestionTypeCounts>
+   <Concrete>
+   <English> 18 </English>
+   <Spanish> 0 </Spanish>
+</Concrete>
+   <Abstract>
+   <English> 18 </English>
+   <Spanish> 0 </Spanish>
+</Abstract>
+   <Relational>
+   <English> 20 </English>
+   <Spanish> 0 </Spanish>
+</Relational>
+</QuestionTypeCounts>
+
+
+<Input>
+  <Concrete> 21  </Concrete>
+  <Abstract> 21  </Abstract>
+  <Relational> 23  </Relational>
+  <ReaderInProgress> parent  </ReaderInProgress>
+  <LanguageInProgress> ES  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 24  </Concrete>
+  <Abstract> 24  </Abstract>
+  <Relational> 26  </Relational>
+  <ReaderInProgress> parent  </ReaderInProgress>
+  <LanguageInProgress> ES  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 25  </Concrete>
+  <Abstract> 26  </Abstract>
+  <Relational> 28  </Relational>
+  <ReaderInProgress> parent  </ReaderInProgress>
+  <LanguageInProgress> ES  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 29  </Concrete>
+  <Abstract> 30  </Abstract>
+  <Relational> 32  </Relational>
+  <ReaderInProgress> parent  </ReaderInProgress>
+  <LanguageInProgress> ES  </LanguageInProgress>
+</Input>
+
+  <Action> Tap Relational (R) Button  </Action>
+
+<Input>
+  <Concrete> 33  </Concrete>
+  <Abstract> 34  </Abstract>
+  <Relational> 37  </Relational>
+  <ReaderInProgress> parent  </ReaderInProgress>
+  <LanguageInProgress> ES  </LanguageInProgress>
+</Input>
+
+
+<QuestionTypeCounts>
+   <Concrete>
+   <English> 33 </English>
+   <Spanish> 0 </Spanish>
+</Concrete>
+   <Abstract>
+   <English> 34 </English>
+   <Spanish> 0 </Spanish>
+</Abstract>
+   <Relational>
+   <English> 37 </English>
+   <Spanish> 0 </Spanish>
+</Relational>
+</QuestionTypeCounts>
+
+
+<QuestionTypeCounts>
+   <Concrete>
+   <English> 33 </English>
+   <Spanish> 0 </Spanish>
+</Concrete>
+   <Abstract>
+   <English> 34 </English>
+   <Spanish> 0 </Spanish>
+</Abstract>
+   <Relational>
+   <English> 37 </English>
+   <Spanish> 0 </Spanish>
+</Relational>
+</QuestionTypeCounts>
+
+
+<QuestionTypeCounts>
+   <Concrete>
+   <English> 33 </English>
+   <Spanish> 0 </Spanish>
+</Concrete>
+   <Abstract>
+   <English> 34 </English>
+   <Spanish> 0 </Spanish>
+</Abstract>
+   <Relational>
+   <English> 37 </English>
+   <Spanish> 0 </Spanish>
+</Relational>
+</QuestionTypeCounts>
+
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Tap Abstract (A) Button  </Action>
+  <Action> Tap Abstract (A) Button  </Action>
+  <Action> Tap Abstract (A) Button  </Action>
+  <Action> Tap Abstract (A) Button  </Action>
+  <Action> Tap Abstract (A) Button  </Action>
+  <Action> Tap Abstract (A) Button  </Action>
+  <Action> Tap Abstract (A) Button  </Action>
+
+<Input>
+  <Concrete> 33  </Concrete>
+  <Abstract> 41  </Abstract>
+  <Relational> 44  </Relational>
+  <ReaderInProgress> child  </ReaderInProgress>
+  <LanguageInProgress> ES  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 33  </Concrete>
+  <Abstract> 41  </Abstract>
+  <Relational> 44  </Relational>
+  <ReaderInProgress> child  </ReaderInProgress>
+  <LanguageInProgress> ES  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 33  </Concrete>
+  <Abstract> 41  </Abstract>
+  <Relational> 44  </Relational>
+  <ReaderInProgress> child  </ReaderInProgress>
+  <LanguageInProgress> ES  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 33  </Concrete>
+  <Abstract> 41  </Abstract>
+  <Relational> 44  </Relational>
+  <ReaderInProgress> child  </ReaderInProgress>
+  <LanguageInProgress> ES  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 33  </Concrete>
+  <Abstract> 41  </Abstract>
+  <Relational> 44  </Relational>
+  <ReaderInProgress> child  </ReaderInProgress>
+  <LanguageInProgress> ES  </LanguageInProgress>
+</Input>
+
+
+<QuestionTypeCounts>
+   <Concrete>
+   <English> 33 </English>
+   <Spanish> 0 </Spanish>
+</Concrete>
+   <Abstract>
+   <English> 41 </English>
+   <Spanish> 0 </Spanish>
+</Abstract>
+   <Relational>
+   <English> 44 </English>
+   <Spanish> 0 </Spanish>
+</Relational>
+</QuestionTypeCounts>
+
+
+<QuestionTypeCounts>
+   <Concrete>
+   <English> 33 </English>
+   <Spanish> 0 </Spanish>
+</Concrete>
+   <Abstract>
+   <English> 41 </English>
+   <Spanish> 0 </Spanish>
+</Abstract>
+   <Relational>
+   <English> 44 </English>
+   <Spanish> 0 </Spanish>
+</Relational>
+</QuestionTypeCounts>
+
+
+<QuestionTypeCounts>
+   <Concrete>
+   <English> 33 </English>
+   <Spanish> 0 </Spanish>
+</Concrete>
+   <Abstract>
+   <English> 41 </English>
+   <Spanish> 0 </Spanish>
+</Abstract>
+   <Relational>
+   <English> 44 </English>
+   <Spanish> 0 </Spanish>
+</Relational>
+</QuestionTypeCounts>
+
+
+<Input>
+  <Concrete> 33  </Concrete>
+  <Abstract> 41  </Abstract>
+  <Relational> 44  </Relational>
+  <ReaderInProgress> parent  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 33  </Concrete>
+  <Abstract> 41  </Abstract>
+  <Relational> 44  </Relational>
+  <ReaderInProgress> parent  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 33  </Concrete>
+  <Abstract> 41  </Abstract>
+  <Relational> 44  </Relational>
+  <ReaderInProgress> parent  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+  <Action> Tap Relational (R) Button  </Action>
+
+<Input>
+  <Concrete> 33  </Concrete>
+  <Abstract> 41  </Abstract>
+  <Relational> 45  </Relational>
+  <ReaderInProgress> parent  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 33  </Concrete>
+  <Abstract> 41  </Abstract>
+  <Relational> 45  </Relational>
+  <ReaderInProgress> parent  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+
+<QuestionTypeCounts>
+   <Concrete>
+   <English> 33 </English>
+   <Spanish> 0 </Spanish>
+</Concrete>
+   <Abstract>
+   <English> 41 </English>
+   <Spanish> 0 </Spanish>
+</Abstract>
+   <Relational>
+   <English> 45 </English>
+   <Spanish> 0 </Spanish>
+</Relational>
+</QuestionTypeCounts>
+
+
+<QuestionTypeCounts>
+   <Concrete>
+   <English> 0 </English>
+   <Spanish> 0 </Spanish>
+</Concrete>
+   <Abstract>
+   <English> 0 </English>
+   <Spanish> 0 </Spanish>
+</Abstract>
+   <Relational>
+   <English> 0 </English>
+   <Spanish> 0 </Spanish>
+</Relational>
+</QuestionTypeCounts>
+
+
+<QuestionTypeCounts>
+   <Concrete>
+   <English> 0 </English>
+   <Spanish> 0 </Spanish>
+</Concrete>
+   <Abstract>
+   <English> 0 </English>
+   <Spanish> 0 </Spanish>
+</Abstract>
+   <Relational>
+   <English> 0 </English>
+   <Spanish> 0 </Spanish>
+</Relational>
+</QuestionTypeCounts>
+
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Tap Abstract (A) Button  </Action>
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Decrement Relational (R) Count  </Action>
+  <Action> Decrement Relational (R) Count  </Action>
+  <Action> Decrement Abstract (A) Count  </Action>
+  <Action> Decrement Abstract (A) Count  </Action>
+
+<Input>
+  <Concrete> 0  </Concrete>
+  <Abstract> 0  </Abstract>
+  <Relational> 1  </Relational>
+  <ReaderInProgress> child  </ReaderInProgress>
+  <LanguageInProgress> ES  </LanguageInProgress>
+</Input>
+
+  <Action> Tap Relational (R) Button  </Action>
+
+<Input>
+  <Concrete> 1  </Concrete>
+  <Abstract> 1  </Abstract>
+  <Relational> 3  </Relational>
+  <ReaderInProgress> child  </ReaderInProgress>
+  <LanguageInProgress> ES  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 3  </Concrete>
+  <Abstract> 3  </Abstract>
+  <Relational> 5  </Relational>
+  <ReaderInProgress> child  </ReaderInProgress>
+  <LanguageInProgress> ES  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 4  </Concrete>
+  <Abstract> 4  </Abstract>
+  <Relational> 6  </Relational>
+  <ReaderInProgress> child  </ReaderInProgress>
+  <LanguageInProgress> ES  </LanguageInProgress>
+</Input>
+
+  <Action> Tap Relational (R) Button  </Action>
+
+<Input>
+  <Concrete> 4  </Concrete>
+  <Abstract> 4  </Abstract>
+  <Relational> 7  </Relational>
+  <ReaderInProgress> child  </ReaderInProgress>
+  <LanguageInProgress> ES  </LanguageInProgress>
+</Input>
+
+  <Action> Tap Abstract (A) Button  </Action>
+  <Action> Tap Abstract (A) Button  </Action>
+  <Action> Tap Abstract (A) Button  </Action>
+  <Action> Tap Abstract (A) Button  </Action>
+  <Action> Tap Abstract (A) Button  </Action>
+  <Action> Tap Abstract (A) Button  </Action>
+  <Action> Tap Abstract (A) Button  </Action>
+  <Action> Tap Concrete (C) Button  </Action>
+  <Action> Tap Concrete (C) Button  </Action>
+  <Action> Tap Concrete (C) Button  </Action>
+  <Action> Tap Concrete (C) Button  </Action>
+  <Action> Tap Abstract (A) Button  </Action>
+  <Action> Tap Abstract (A) Button  </Action>
+  <Action> Tap Abstract (A) Button  </Action>
+  <Action> Decrement Abstract (A) Count  </Action>
+  <Action> Decrement Abstract (A) Count  </Action>
+  <Action> Decrement Abstract (A) Count  </Action>
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Decrement Relational (R) Count  </Action>
+  <Action> Decrement Relational (R) Count  </Action>
+  <Action> Decrement Relational (R) Count  </Action>
+  <Action> Decrement Relational (R) Count  </Action>
+  <Action> Tap Abstract (A) Button  </Action>
+  <Action> Decrement Relational (R) Count  </Action>
+  <Action> Decrement Relational (R) Count  </Action>
+  <Action> Decrement Relational (R) Count  </Action>
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Tap Concrete (C) Button  </Action>
+  <Action> Tap Concrete (C) Button  </Action>
+  <Action> Tap Concrete (C) Button  </Action>
+  <Action> Tap Concrete (C) Button  </Action>
+  <Action> Tap Concrete (C) Button  </Action>
+  <Action> Tap Concrete (C) Button  </Action>
+  <Action> Decrement Concrete (C) Count  </Action>
+  <Action> Decrement Concrete (C) Count  </Action>
+  <Action> Decrement Concrete (C) Count  </Action>
+
+<Input>
+  <Concrete> 13  </Concrete>
+  <Abstract> 13  </Abstract>
+  <Relational> 13  </Relational>
+  <ReaderInProgress> child  </ReaderInProgress>
+  <LanguageInProgress> ES  </LanguageInProgress>
+</Input>
+
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Tap Abstract (A) Button  </Action>
+  <Action> Tap Abstract (A) Button  </Action>
+
+<Input>
+  <Concrete> 17  </Concrete>
+  <Abstract> 19  </Abstract>
+  <Relational> 18  </Relational>
+  <ReaderInProgress> child  </ReaderInProgress>
+  <LanguageInProgress> ES  </LanguageInProgress>
+</Input>
+
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Tap Relational (R) Button  </Action>
+
+<Input>
+  <Concrete> 19  </Concrete>
+  <Abstract> 21  </Abstract>
+  <Relational> 22  </Relational>
+  <ReaderInProgress> child  </ReaderInProgress>
+  <LanguageInProgress> ES  </LanguageInProgress>
+</Input>
+
+
+<QuestionTypeCounts>
+   <Concrete>
+   <English> 19 </English>
+   <Spanish> 0 </Spanish>
+</Concrete>
+   <Abstract>
+   <English> 21 </English>
+   <Spanish> 0 </Spanish>
+</Abstract>
+   <Relational>
+   <English> 22 </English>
+   <Spanish> 0 </Spanish>
+</Relational>
+</QuestionTypeCounts>
+
+
+<QuestionTypeCounts>
+   <Concrete>
+   <English> 19 </English>
+   <Spanish> 0 </Spanish>
+</Concrete>
+   <Abstract>
+   <English> 21 </English>
+   <Spanish> 0 </Spanish>
+</Abstract>
+   <Relational>
+   <English> 22 </English>
+   <Spanish> 0 </Spanish>
+</Relational>
+</QuestionTypeCounts>
+
+
+<QuestionTypeCounts>
+   <Concrete>
+   <English> 19 </English>
+   <Spanish> 0 </Spanish>
+</Concrete>
+   <Abstract>
+   <English> 21 </English>
+   <Spanish> 0 </Spanish>
+</Abstract>
+   <Relational>
+   <English> 22 </English>
+   <Spanish> 0 </Spanish>
+</Relational>
+</QuestionTypeCounts>
+
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Decrement Relational (R) Count  </Action>
+
+<Input>
+  <Concrete> 19  </Concrete>
+  <Abstract> 21  </Abstract>
+  <Relational> 23  </Relational>
+  <ReaderInProgress> parent  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Tap Relational (R) Button  </Action>
+  <Action> Decrement Relational (R) Count  </Action>
+  <Action> Tap Abstract (A) Button  </Action>
+
+<Input>
+  <Concrete> 22  </Concrete>
+  <Abstract> 25  </Abstract>
+  <Relational> 27  </Relational>
+  <ReaderInProgress> parent  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+  <Action> Tap Concrete (C) Button  </Action>
+
+<Input>
+  <Concrete> 26  </Concrete>
+  <Abstract> 28  </Abstract>
+  <Relational> 30  </Relational>
+  <ReaderInProgress> parent  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 30  </Concrete>
+  <Abstract> 32  </Abstract>
+  <Relational> 34  </Relational>
+  <ReaderInProgress> parent  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 34  </Concrete>
+  <Abstract> 36  </Abstract>
+  <Relational> 38  </Relational>
+  <ReaderInProgress> parent  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 37  </Concrete>
+  <Abstract> 39  </Abstract>
+  <Relational> 41  </Relational>
+  <ReaderInProgress> parent  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+
+<QuestionTypeCounts>
+   <Concrete>
+   <English> 37 </English>
+   <Spanish> 0 </Spanish>
+</Concrete>
+   <Abstract>
+   <English> 39 </English>
+   <Spanish> 0 </Spanish>
+</Abstract>
+   <Relational>
+   <English> 41 </English>
+   <Spanish> 0 </Spanish>
+</Relational>
+</QuestionTypeCounts>
+
+
+<QuestionTypeCounts>
+   <Concrete>
+   <English> 37 </English>
+   <Spanish> 0 </Spanish>
+</Concrete>
+   <Abstract>
+   <English> 39 </English>
+   <Spanish> 0 </Spanish>
+</Abstract>
+   <Relational>
+   <English> 41 </English>
+   <Spanish> 0 </Spanish>
+</Relational>
+</QuestionTypeCounts>
+
+
+<QuestionTypeCounts>
+   <Concrete>
+   <English> 37 </English>
+   <Spanish> 0 </Spanish>
+</Concrete>
+   <Abstract>
+   <English> 39 </English>
+   <Spanish> 0 </Spanish>
+</Abstract>
+   <Relational>
+   <English> 41 </English>
+   <Spanish> 0 </Spanish>
+</Relational>
+</QuestionTypeCounts>
+
+
+<Input>
+  <Concrete> 37  </Concrete>
+  <Abstract> 39  </Abstract>
+  <Relational> 41  </Relational>
+  <ReaderInProgress> child  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 37  </Concrete>
+  <Abstract> 39  </Abstract>
+  <Relational> 41  </Relational>
+  <ReaderInProgress> child  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 37  </Concrete>
+  <Abstract> 39  </Abstract>
+  <Relational> 41  </Relational>
+  <ReaderInProgress> child  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 37  </Concrete>
+  <Abstract> 39  </Abstract>
+  <Relational> 41  </Relational>
+  <ReaderInProgress> child  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 37  </Concrete>
+  <Abstract> 39  </Abstract>
+  <Relational> 41  </Relational>
+  <ReaderInProgress> child  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 37  </Concrete>
+  <Abstract> 39  </Abstract>
+  <Relational> 41  </Relational>
+  <ReaderInProgress> child  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+
+<QuestionTypeCounts>
+   <Concrete>
+   <English> 37 </English>
+   <Spanish> 0 </Spanish>
+</Concrete>
+   <Abstract>
+   <English> 39 </English>
+   <Spanish> 0 </Spanish>
+</Abstract>
+   <Relational>
+   <English> 41 </English>
+   <Spanish> 0 </Spanish>
+</Relational>
+</QuestionTypeCounts>
+
+
+<QuestionTypeCounts>
+   <Concrete>
+   <English> 37 </English>
+   <Spanish> 0 </Spanish>
+</Concrete>
+   <Abstract>
+   <English> 39 </English>
+   <Spanish> 0 </Spanish>
+</Abstract>
+   <Relational>
+   <English> 41 </English>
+   <Spanish> 0 </Spanish>
+</Relational>
+</QuestionTypeCounts>
+
+
+<QuestionTypeCounts>
+   <Concrete>
+   <English> 37 </English>
+   <Spanish> 0 </Spanish>
+</Concrete>
+   <Abstract>
+   <English> 39 </English>
+   <Spanish> 0 </Spanish>
+</Abstract>
+   <Relational>
+   <English> 41 </English>
+   <Spanish> 0 </Spanish>
+</Relational>
+</QuestionTypeCounts>
+
+
+<Input>
+  <Concrete> 37  </Concrete>
+  <Abstract> 39  </Abstract>
+  <Relational> 41  </Relational>
+  <ReaderInProgress> parent  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 37  </Concrete>
+  <Abstract> 39  </Abstract>
+  <Relational> 41  </Relational>
+  <ReaderInProgress> parent  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 37  </Concrete>
+  <Abstract> 39  </Abstract>
+  <Relational> 41  </Relational>
+  <ReaderInProgress> parent  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 37  </Concrete>
+  <Abstract> 39  </Abstract>
+  <Relational> 41  </Relational>
+  <ReaderInProgress> parent  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
+
+<Input>
+  <Concrete> 37  </Concrete>
+  <Abstract> 39  </Abstract>
+  <Relational> 41  </Relational>
+  <ReaderInProgress> parent  </ReaderInProgress>
+  <LanguageInProgress> EN  </LanguageInProgress>
+</Input>
+
