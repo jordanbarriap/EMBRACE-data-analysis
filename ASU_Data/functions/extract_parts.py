@@ -6,19 +6,17 @@ def extract_file(root, f):
         # CAR labels
         if element.tag == 'Input' and len(element) > 0 and  element[0].tag == 'Concrete':
             f.write("\n<Input>\n")
-            print("<Input>")
             for i in element:
                 f.write(f'  <{i.tag}> {i.text}  </{i.tag}>\n')
-                print(f'    <{i.tag}> {i.text}  </{i.tag}>')
             
             f.write("</Input>\n\n")
-            print("</Input>\n")
         
         # tap/decrement events
         if element.text == 'TapParentQuestionTypeEvent':
             action_element = element.getparent().find('Action')
             f.write(f'  <{action_element.tag}> {action_element.text}  </{action_element.tag}>\n')
-            print(f'    <{action_element.tag}> {action_element.text}  </{action_element.tag}>\n')
+            book_title_element = element.getparent().find('Context')[0].find('Book_Title')
+            f.write(f'  <{book_title_element.tag}> {book_title_element.text} </{book_title_element.tag}>\n\n')
         
         # CAR labels with language separation
         if element.tag == 'QuestionTypeCounts':
