@@ -34,7 +34,7 @@ def extract_folder():
 
 
 if __name__=='__main__': 
-    xml_path = 'ASU_Data/par 007/5 par007 e 10-19-2022T07_13.13.606.xml'
+    xml_path = 'ASU_Data/par 007/h par007 g 08-25-2022T08_09.46.637.xml'
     folder_path = 'ASU_Data/par 007'
 
     tree = etree.parse(xml_path)
@@ -42,6 +42,6 @@ if __name__=='__main__':
     root = tree.getroot()
 
 
-    f = open('ASU_Data/functions/test.xml', "a")
+    f = open('ASU_Data/functions/test.xml', "w")
     extract_file(root, f)
     f.close()

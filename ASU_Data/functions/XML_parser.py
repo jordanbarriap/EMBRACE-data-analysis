@@ -3,6 +3,7 @@
     It's based on the Tap/Decrement actions
 '''
 from lxml import etree
+import csv
 
 class counter:
     '''
@@ -80,8 +81,17 @@ if __name__=='__main__':
                         # we count this snippit
                         count_q(counter, i.getparent().getparent().getparent())
     
+    # set up the csv file structure before writing contents to it
+    with open('ASU_Data/functions/summary.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(['Title', 'Concrete', 'Abstract', 'Relational'])
+
     for counter in counter_list:
-        print(f'{counter.book_name}: {counter.concrete}, {counter.abstract}, {counter.relational}')
+        row = [counter.book_name, counter.concrete, counter.abstract, counter.relational]
+        with open('ASU_Data/functions/summary.csv', 'a', newline='') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(row)
+        #print(f'{counter.book_name}: {counter.concrete}, {counter.abstract}, {counter.relational}')
 
 
     
