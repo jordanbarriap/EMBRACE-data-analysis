@@ -1,3 +1,7 @@
 .DS_Store
 audios/.DS_Store
 ASU_Data/.DS_Store
+.ipynb_checkpoints
+.idea
+.conda
+__pycache__
