@@ -118,7 +118,11 @@ def get_voice_activity(filename,print_timespans_option,play_option):
                                         use_auth_token="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")
 
     output = pipeline_act_detection(filename)
-    audio = AudioSegment.from_wav(filename)
+    #audio = AudioSegment.from_wav(filename)
+    try:
+        audio = AudioSegment.from_file(filename, "mp3")
+    except:
+        audio = AudioSegment.from_file(filename, format="mp4")
 
     voice_act_tuples_list = []
 
