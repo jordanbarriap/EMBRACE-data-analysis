@@ -7,6 +7,8 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(car)
 ```
 
 ## R Markdown
@@ -15,16 +17,112 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-```{r cars}
-summary(cars)
+```{r opening_idela}
+df <- read.csv(file = './data/summer23-pitt/IDELA-Base.csv')
+
 ```
 
 ## Including Plots
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r vars_distribution, echo=FALSE}
+hist(df$duration,
+  xlab = "duration (secs)",
+  main = "Duration of voice recordings",
+  breaks = 15
+  #breaks = sqrt(nrow(df))
+) # set number of bins
+
+boxplot(df$duration,
+  ylab = "duration (secs)"
+)
+```
+```{r chapter_openings_distribution, echo=FALSE}
+hist(df$chapter_openings,
+  xlab = "chapter openings",
+  main = "Chapter openings",
+  breaks = 15
+  #breaks = sqrt(nrow(df))
+) # set number of bins
+
+boxplot(df$chapter_openings,
+  ylab = "chapter openings"
+)
+```
+```{r avg_time_per_chapter_distribution, echo=FALSE}
+hist(df$avg_duration_per_chapter,
+  xlab = "avg time per chapter opening",
+  main = "Avg time per chapter opening",
+  breaks = 15
+  #breaks = sqrt(nrow(df))
+) # set number of bins
+
+boxplot(df$avg_duration_per_chapter,
+  ylab = "chapter openings"
+)
+```
+```{r clickPrompts, echo=FALSE}
+hist(df$clickPrompts,
+  xlab = "total prompt clicks",
+  main = "total prompt clicks",
+  breaks = 15
+  #breaks = sqrt(nrow(df))
+) # set number of bins
+
+boxplot(df$clickPrompts,
+  ylab = "total prompt clicks"
+)
+hist(df$clickPromptsUnique,
+  xlab = "total prompt clicks unique",
+  main = "total prompt clicks unique",
+  breaks = 15
+  #breaks = sqrt(nrow(df))
+) # set number of bins
+
+boxplot(df$clickPromptsUnique,
+  ylab = "total prompt clicks unique"
+)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r analysis_duration_chapters_openings}
+users_neg_lgain <- df[df$Post_TotVoc_Strict-df$Pre_TotVoc_Strict<0,]$ID_CC
+users_neg_lgain
+
+users_zero_neg_lgain <- df[df$Post_TotVoc_Strict-df$Pre_TotVoc_Strict<=0,]$ID_CC
+users_zero_neg_lgain
+
+ancova_model_duration <- aov(Post_TotVoc_Strict~ Pre_TotVoc_Strict + duration, data = df[(df$duration<12000) & !(df$ID_CC %in% users_neg_lgain),])
+Anova(ancova_model_duration, type="III")
+
+ancova_model_chapters_openings <- aov(Post_TotVoc_Strict~ Pre_TotVoc_Strict + chapter_openings, data = df[(df$chapter_openings<180) & !(df$ID_CC %in% users_neg_lgain),])
+Anova(ancova_model_chapters_openings, type="III")
+
+ancova_model_avg_duration_chapter <- aov(Post_TotVoc_Strict~ Pre_TotVoc_Strict + avg_duration_per_chapter, data = df[(df$chapter_openings<12000) & !(df$ID_CC %in% users_neg_lgain),])
+Anova(ancova_model_avg_duration_chapter, type="III")
+
+ancova_model_prompts <- aov(Post_TotVoc_Strict~ Pre_TotVoc_Strict + clickPromptsUnique, data = df[(df$duration<12000) & !(df$ID_CC %in% users_neg_lgain),])
+Anova(ancova_model_prompts, type="III")
+```
+
+```{r atl_analysis}
+ancova_model_duration_ATL <- aov(Post_ATL~ Pre_ATL + duration, data = df[(df$duration<12000) & !(df$ID_CC %in% users_neg_lgain),])
+Anova(ancova_model_duration_ATL, type="III")
+
+#clickprompts
+ancova_model_prompts_ATL <- aov(Post_ATL~ Pre_ATL + clickPromptsUnique, data = df[(df$duration<12000) & !(df$ID_CC %in% users_neg_lgain),])
+Anova(ancova_model_prompts_ATL, type="III")
+
+
+ancova_model_chapter_openings_ATL <- aov(Post_ATL~ Pre_ATL + chapter_openings, data = df[(df$chapter_openings<175) & !(df$ID_CC %in% users_neg_lgain),])
+Anova(ancova_model_chapter_openings_ATL, type="III")
+```
+
+```{r lm}
+# Fit the multiple linear regression model
+ATL_lm = lm(formula = Post_ATL ~ Pre_ATL + clickPromptsUnique + duration, data = df[(df$duration<12000) & !(df$ID_CC %in% users_neg_lgain),])
+summary(ATL_lm)
+
+TotVoc_lm = lm(formula = Post_TotVoc_Strict ~ Pre_TotVoc_Strict + clickPromptsUnique + duration, data = df[(df$duration<12000) & !(df$ID_CC %in% users_neg_lgain),])
+summary(TotVoc_lm)
+```
