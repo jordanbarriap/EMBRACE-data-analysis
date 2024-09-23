@@ -7,8 +7,15 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(dplyr)
 library(car)
+library(ggplot2)
+library(tidyverse)
+library(dplyr)
+library(emmeans)
+library(Hmisc)
+library(corrplot)
+library(lm.beta)
+library(moments)
 ```
 
 ## R Markdown
@@ -19,7 +26,192 @@ When you click the **Knit** button a document will be generated that includes bo
 
 ```{r opening_idela}
 df <- read.csv(file = './data/summer23-pitt/IDELA-Base.csv')
+#df_complete <- read.csv(file = './data/summer23-pitt/DATABASE_15min_threshold.csv')
+df_complete <- read.csv(file = './data/summer23-pitt/DATABASE (June-2024).csv')
 
+#df <- df[df$ID_CC!=16]
+df_complete <- filter(df_complete, ID_CC!=16)
+df_complete <- filter(df_complete, ID_CC!=34)
+df_complete <- filter(df_complete, ID_CC!=33)
+df_complete <- filter(df_complete, ID_CC!=2)
+
+#convert binary par_edu to 0 or 1
+df_complete$Par_Edu_num <- ifelse(df_complete$Par_Edu == "GED diploma or higher",1,0)
+
+#calculate who achieved the requirements
+df_complete$use_req_complete <- ifelse(df_complete$activityDays>11.0,1,0)
+
+#gains for retell
+df_complete$Retell_Type_Learning_Gain = df_complete$Post.Test_Retell_WordType - df_complete$Pre.Test_Retell_WordType
+
+df_complete$Retell_Token_Learning_Gain = df_complete$Post.Test_Retell_WordToken - df_complete$Pre.Test_Retell_WordToken
+
+#dichotomization of variables
+df_complete$avgTimePerQuestion_group <- ifelse(df_complete$avgTimePerQuestion>=median(df_complete$avgTimePerQuestion),1,0)
+df_complete$chapter_openings_group <- ifelse(df_complete$chapter_openings>=median(df_complete$chapter_openings),1,0)
+df_complete$clickPromptsUnique_group <- ifelse(df_complete$clickPromptsUnique>=median(df_complete$clickPromptsUnique),1,0)
+df_complete$totalTime_group <- ifelse(df_complete$totalTime>=median(df_complete$totalTime),1,0)
+df_complete$totalQuestionTime_group <- ifelse(df_complete$totalQuestionTime>=median(df_complete$totalQuestionTime),1,0)
+df_complete$totalReadingTime_group <- ifelse(df_complete$totalReadingTime>=median(df_complete$totalReadingTime),1,0)
+
+#Log transform of the variables
+df_complete$totalQuestionTime_log <- log(df_complete$totalQuestionTime+1)
+df_complete$totalReadingTime_log <- log(df_complete$totalReadingTime+1)
+df_complete$totalReadingTime_group <- ifelse(df_complete$totalReadingTime_log<=median(df_complete$totalReadingTime_log),0,1)
+df_complete$totalReadingTime_group_cat <- ifelse(df_complete$totalReadingTime_log,"low","high")
+df_complete$clickPromptsUnique_log <- log(df_complete$clickPromptsUnique+1)
+df_complete$chapter_openings_log <- log(df_complete$chapter_openings+1)
+df_complete$totalTime_log <- log(df_complete$totalTime+1)
+
+#transform to numerical variables
+df_complete$Pre.Test_Retell_TypeToken_Ratio = as.numeric(df_complete$Pre.Test_Retell_TypeToken_Ratio)
+df_complete$Post.Test_Retell_TypeToken_Ratio = as.numeric(df_complete$Post.Test_Retell_TypeToken_Ratio)
+
+#bimodal distribution of percentage
+df_complete$propQuestionTime_group <- ifelse(df_complete$propQuestionTime<.3,0,1)
+
+# Convert textual percentages to numeric values
+convert_percentage <- function(percentage_text) {
+  numeric_value <- as.numeric(gsub("%", "", percentage_text))
+  return(numeric_value)
+}
+
+# Apply the conversion function to the 'percentage' column
+df_complete$Story_Mem_Gain <- sapply(df_complete$Story.Memory_Change.from.pre..to.post.test.Percentage, convert_percentage)
+
+# Define a function to calculate standard error
+se <- function(x) {
+  sd(x) / sqrt(length(x))
+}
+
+cor.test(df_complete$Par_Edu_num, df_complete$Home.practice.Average..0.7.)
+cor.test(df_complete$totalQuestionTime, df_complete$Home.practice.Average..0.7.)
+cor.test(df_complete$totalReadingTime_log, df_complete$Home.practice.Average..0.7.)
+cor.test(df_complete$totalQuestionTime, df_complete$clickPromptsUnique)
+
+```
+
+```{r zero_both_tests}
+
+#students who had zero in both tests
+df_complete$totvoc_zero_zero <- ifelse(df_complete$Pre_TotVoc_Strict==0 & df_complete$Post_TotVoc_Strict==0,1,0)
+df_complete$comp_zero_zero <- ifelse(df_complete$Pre_Comprenhension_task ==0 & df_complete$Post_Comprenhension_task==0,1,0)
+ 
+# Frequency table for the ages in zero-zero totvoc
+print('Tot voc zero pretest, zero posttest')
+frequency_table_totvoc <- table(df_complete[df_complete$totvoc_zero_zero==1,'Chi_Age_YearOlds'])
+print(frequency_table_totvoc)
+
+# Frequency table for the ages in zero-zero totvoc
+print('Comprehensive task zero pretest, zero posttest')
+frequency_table_comp <- table(df_complete[df_complete$comp_zero_zero==1,'Chi_Age_YearOlds'])
+print(frequency_table_comp)
+
+cor.test(df_complete$clickPromptsUnique_group,df_complete$Pre_Comprenhension_task)
+cor.test(df_complete$clickPromptsUnique_group,df_complete$Pre_TotVoc_Strict)
+
+cor.test(df_complete[df_complete$totvoc_zero_zero==0 & df_complete$TotVoc_Strict_Learning_Gain>=0 ,]$TotVoc_Strict_Norm_Learning_Gain, df_complete[df_complete$totvoc_zero_zero==0 & df_complete$TotVoc_Strict_Learning_Gain>=0,]$use_req_complete)
+
+# Frequency table for the ages in neg totvoc
+print('Tot voc negative gain')
+frequency_table_totvoc_neg <- table(df_complete[df_complete$TotVoc_Strict_Learning_Gain<=0,'Chi_Age_YearOlds'])
+print(frequency_table_totvoc_neg)
+
+# Frequency table for the ages in neg comprehensive task
+print('Conmprehensive task negative gain')
+frequency_table_comp_neg <- table(df_complete[df_complete$Comp_Learning_Gain<=0,'Chi_Age_YearOlds'])
+print(frequency_table_comp_neg)
+
+
+
+```
+```{r comparisons}
+
+plot(df_complete$totalQuestionTime,df_complete$Post_Comprenhension_task)
+
+boxplot(df_complete$totalQuestionTime)
+skewness(df_complete$totalReadingTime)
+skewness(log(df_complete$totalReadingTime+1))
+skewness(df_complete$totalQuestionTime)
+skewness(log(df_complete$totalQuestionTime+1))
+hist(df_complete$totalQuestionTime)
+hist(log(df_complete$totalQuestionTime+1))
+hist(df_complete$Comp_Learning_Gain)
+hist(df_complete$TotVoc_Strict_Learning_Gain)
+hist(df_complete$Retell_Type_Learning_Gain)
+hist(df_complete$Retell_Token_Learning_Gain)
+# Two-sample t-test
+t_test_two_sample_totvoc <- t.test(df_complete[df_complete$use_req_complete==0,]$TotVoc_Strict_Learning_Gain, df_complete[df_complete$use_req_complete==1,]$TotVoc_Strict_Learning_Gain)
+print(t_test_two_sample_totvoc)
+
+t_test_two_sample_comp <- t.test(df_complete[df_complete$use_req_complete==0,]$Comp_Learning_Gain, df_complete[df_complete$use_req_complete==1,]$Comp_Learning_Gain)
+print(t_test_two_sample_comp)
+```
+
+```{r ancovas}
+# Perform ANCOVA
+#ancova_result_totvoc <- aov(Post_TotVoc_Strict ~ use_req_complete + Pre_TotVoc_Strict, data=df_complete)
+
+#no pre zero and post zero
+#ancova_result_totvoc <- aov(Post_TotVoc_Strict ~ use_req_complete + Pre_TotVoc_Strict, data = df_complete[df_complete$totvoc_zero_zero==0,])
+
+#no pre zero and post zero and no negatives
+ancova_result_totvoc <- aov(Post_TotVoc_Strict ~ use_req_complete + Pre_TotVoc_Strict, data = df_complete[df_complete$totvoc_zero_zero==0 & df_complete$TotVoc_Strict_Learning_Gain>=0,])
+
+                            summary(ancova_result_totvoc)
+# Perform post hoc test using emmeans
+emm_totvoc <- emmeans(ancova_result_totvoc, ~ use_req_complete)
+# Pairwise comparisons
+pairwise_results_totvoc <- pairs(emm_totvoc)
+# Summary of pairwise comparisons
+pairwise_results_summary_totvoc <- summary(pairwise_results_totvoc)
+print(pairwise_results_summary_totvoc)
+
+ancova_result_comp <- aov(Post_Comprenhension_task ~ use_req_complete + Pre_Comprenhension_task, data  = df_complete[df_complete$comp_zero_zero==0 & df_complete$Comp_Learning_Gain>=0,])
+summary(ancova_result_comp)
+# Perform post hoc test using emmeans
+emm_comp <- emmeans(ancova_result_comp, ~ use_req_complete)
+# Pairwise comparisons
+pairwise_results_comp <- pairs(emm_comp)
+# Summary of pairwise comparisons
+pairwise_results_summary_comp <- summary(pairwise_results_comp)
+print(pairwise_results_summary_comp)
+```
+```{r differences_req_complete}
+df_complete_plots <- df_complete[df_complete$totvoc_zero_zero==0,] #& df_complete$TotVoc_Strict_Learning_Gain>=0,]
+# Create the boxplot
+ggplot(df_complete_plots, aes(x = as.factor(use_req_complete), y = Pre_TotVoc_Strict)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(title = "Boxplot per Group", x = "Min usage req", y = "Pretest vocab")
+
+# Create the boxplot
+ggplot(df_complete_plots, aes(x = as.factor(use_req_complete), y = Post_TotVoc_Strict)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(title = "Boxplot per Group", x = "Min usage req", y = "Posttest vocab")
+
+# Create the boxplot
+ggplot(df_complete_plots, aes(x = as.factor(use_req_complete), y = TotVoc_Strict_Learning_Gain)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(title = "Boxplot per Group", x = "Min usage req", y = "Vocab gain")
+
+# Create the boxplot
+ggplot(df_complete_plots, aes(x = as.factor(use_req_complete), y = TotVoc_Strict_Norm_Learning_Gain)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(title = "Boxplot per Group", x = "Min usage req", y = "Vocab gain normalized")
+
+#### Comprehension ####
+
+df_complete_plots2 <- df_complete[df_complete$comp_zero_zero==0 & df_complete$Comp_Learning_Gain>=0,]
+
+# Create the boxplot
+ggplot(df_complete_plots2, aes(x = as.factor(use_req_complete), y = Comp_Learning_Gain)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(title = "Boxplot per Group", x = "Min usage req", y = "Comprehension task gain")
 ```
 
 ## Including Plots
@@ -62,6 +254,19 @@ boxplot(df$avg_duration_per_chapter,
   ylab = "chapter openings"
 )
 ```
+
+```{r HLT_distribution, echo=FALSE}
+hist(df_complete$Home.practice.Average..0.7.,
+  xlab = "Home literacy",
+  main = "Home literacy",
+  breaks = 10
+  #breaks = sqrt(nrow(df))
+) # set number of bins
+
+boxplot(df_complete$Home.practice.Average..0.7.,
+  ylab = "Home literacy"
+)
+```
 ```{r clickPrompts, echo=FALSE}
 hist(df$clickPrompts,
   xlab = "total prompt clicks",
@@ -83,6 +288,24 @@ hist(df$clickPromptsUnique,
 boxplot(df$clickPromptsUnique,
   ylab = "total prompt clicks unique"
 )
+```
+
+```{r variable_dist}
+hist(df_complete$propQuestionTime)
+hist(df_complete$clickPromptsUnique)
+skewness(df_complete$totalQuestionTime)
+#hist(log(df_complete$clickPromptsUnique+1))
+hist(log(df_complete$totalReadingTime_log+1))
+median(log(df_complete$totalReadingTime_log+1))
+#hist(df_complete$TotVoc_Strict_Learning_Gain)
+#hist(df_complete$Comp_Learning_Gain)
+#hist(df_complete$Post.Test_Retell_WordType)
+#hist(df_complete$Post.Test_Retell_WordToken)
+#hist(df_complete$Retell_Type_Learning_Gain)
+#hist(df_complete$Retell_Token_Learning_Gain)
+
+
+
 ```
 
 ```{r analysis_duration_chapters_openings}
@@ -125,4 +348,607 @@ summary(ATL_lm)
 
 TotVoc_lm = lm(formula = Post_TotVoc_Strict ~ Pre_TotVoc_Strict + clickPromptsUnique + duration, data = df[(df$duration<12000) & !(df$ID_CC %in% users_neg_lgain),])
 summary(TotVoc_lm)
+```
+
+```{r distributions_per_group}
+df_complete_plot <- filter(df_complete, Chi_Age_YearOlds!='3')
+#df_complete_plot <- df_complete
+x<- df_complete_plot$propQuestionTime
+y<- df_complete_plot$TotVoc_Strict_Learning_Gain
+#y <- df_complete_plot$Comp_Learning_Gain
+
+group <- factor(df_complete_plot$Chi_Age_YearOlds)#
+#group <- factor(df_complete_plot$Par_Edu)
+
+# Scatter plot
+plot(x, y,
+     pch = 19,
+     xlab="Proportion of time spent in questions",
+     ylab = "Strict Total Vocabulary Learning Gain",
+     col = group)
+
+# Legend
+legend("topleft",
+       legend = levels(group),
+       pch = 19,
+       col = factor(levels(group)))
+
+x2<- df_complete_plot$avgTimePerQuestion
+
+# Scatter plot
+plot(x2, y,
+     pch = 19,
+     xlab = "Avg time per question (secs)",
+     ylab = "Strict Total Vocabulary Learning Gain",
+     col = group)
+
+# Legend
+legend("topleft",
+       legend = levels(group),
+       pch = 19,
+       col = factor(levels(group)))
+
+x3<- df_complete_plot$clickPromptsUnique
+
+# Scatter plot
+plot(x3, y,
+     pch = 19,
+     xlab = "Total prompt clicks",
+     ylab = "Strict Total Vocabulary Learning Gain",
+     col = group)
+
+# Legend
+       legend = levels(group),
+       pch = 19,
+       col = factor(levels(group)))
+
+x4 <- df_complete_plot$promptsUniquePerChapter
+# Scatter plot
+plot(x4, y,
+     pch = 19,
+     xlab = "Avg prompt clicks per opened chapter",
+     ylab = "Strict Total Vocabulary Learning Gain",
+     col = group)
+
+# Legend
+legend("topleft",
+       legend = levels(group),
+       pch = 19,
+       col = factor(levels(group)))
+
+x5 <- df_complete_plot$FamilyConversReport
+# Scatter plot
+plot(x5, y,
+     pch = 19,
+     xlab = "Self-reported usage of the app",
+     ylab = "Strict Total Vocabulary Learning Gain",
+     col = group)
+
+# Legend
+legend("topleft",
+       legend = levels(group),
+       pch = 19,
+       col = factor(levels(group)))
+
+x6 <- df_complete_plot$avgTimePerQuestion
+y2 <- df_complete_plot$FamilyConversReport
+# Scatter plot
+plot(x6, y2,
+     pch = 19,
+     xlab = "Avg time per question",
+     ylab = "Self-reported usage of the app",
+     col = group)
+
+# Legend
+legend("topleft",
+       legend = levels(group),
+       pch = 19,
+       col = factor(levels(group)))
+```
+
+```{r clean_data}
+
+df_complete_no3 <- filter(df_complete, Chi_Age_YearOlds!='3')
+
+```
+
+```{r lm_complete_data}
+
+TotVoc_lm_time_lgain = lm(formula = TotVoc_Strict_Learning_Gain ~ avgTimePerQuestion + Home.practice.Average..0.7. + Par_Edu, data = df_complete_plot)
+summary(TotVoc_lm_time_lgain)
+
+TotVoc_lm_timeq2 = lm(formula = Comp_Norm_Learning_Gain ~ FamilyConversReport, data = df_complete_plot)
+summary(TotVoc_lm_timeq2)
+
+TotVoc_lm_timeATL = lm(formula = ATL_Learning_Gain ~ Chi_Age_Month + propQuestionTime, data = df_complete_plot)
+summary(TotVoc_lm_timeATL)
+
+```
+
+```{r totvoc_strict_analysis}
+
+#df_complete_totvoc <- filter(df_complete, Chi_Age_YearOlds!='3')
+#df_complete_totvoc <- df_complete[df_complete$totvoc_zero_zero==0,]
+
+#df_complete_totvoc <- df_complete[df_complete_totvoc$TotVoc_Strict_Learning_Gain>0,]
+df_complete_totvoc <- df_complete
+#df_complete_totvoc <- df_complete_totvoc[df_complete_totvoc$totvoc_zero_zero==0,]
+#df_complete_totvoc <- df_complete_totvoc[df_complete$totalQuestionTime<4000,]
+#df_complete_totvoc <- df_complete[df_complete_totvoc$TotVoc_Strict_Learning_Gain>=0,]
+#df_complete_totvoc <- df_complete_totvoc[df_complete_totvoc$totalQuestionTime_log>5.5,]
+
+nrow(df_complete_totvoc)
+
+#cor.test(df_complete_totvoc$Par_Edu_num,df_complete$Home.practice.Average..0.7.)
+
+vgroup <- factor(df_complete_totvoc$Par_Edu)
+
+corr_res_totvoc <- rcorr(as.matrix(df_complete_totvoc[,c("Pre_TotVoc_Strict","Post_TotVoc_Strict","TotVoc_Strict_Learning_Gain","Par_Edu_num","Home.practice.Average..0.7.","use_req_complete","clickPromptsUnique","chapter_openings","activityDays","avgTimePerQuestion","avgReadingTimePerChapter","Chi_Age_YearOlds","totalReadingTime","totalQuestionTime","FamilyConversReport","totalReadingTime_log","clickPromptsUnique_log","totalTime_log","propQuestionTime")]))#,"chapter_openings","clickPromptsUnique","avgTimePerQuestion","avgReadingTimePerChapter")]))
+# Extract the correlation coefficients and p-values
+corr_matrix_totvoc <- corr_res_totvoc$r
+p_values_totvoc <- corr_res_totvoc$P
+p_values_totvoc[is.na(p_values_totvoc)] <- 1
+# Function to format p-values
+signif_stars <- function(p_values_totvoc) {
+  symnum(p_values_totvoc, corr = FALSE, na = FALSE,
+         cutpoints = c(0, 0.001, 0.01, 0.05, 0.1, 1),
+         symbols = c("***", "**", "*", ".", " "))
+}
+# Create the correlation plot with p-values
+corrplot(corr_matrix_totvoc, method = "color", type = "upper", tl.col = "black", tl.srt = 45,
+         addCoef.col = "black", p.mat = p_values_totvoc, sig.level = 0.05, insig = "blank",
+         number.cex = 0.7, cl.cex = 0.7)#, title = "Correlation Matrix with P-values")
+
+# Create the boxplot
+ggplot(df_complete, aes(x = as.factor(Chi_Age_YearOlds), y = TotVoc_Strict_Learning_Gain)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(title = "Boxplot per Group", x = "Child age", y = "Voc learning gain")
+
+#relationship between home practice avg and reported usage of the app each week
+vx <- df_complete_totvoc$Home.practice.Average..0.7.
+vy <- df_complete_totvoc$FamilyConversReport
+# Scatter plot
+plot(vx, vy,
+     pch = 19,
+     xlab = "home literacy",
+     ylab = "reported usage",
+     col = vgroup)
+
+# Legend
+legend("topleft",
+       legend = levels(vgroup),
+       pch = 19,
+       col = factor(levels(vgroup)))
+
+# Pivot the data frame for word type retell
+df_complete_totvoc_plot <- df_complete_totvoc[, c("Chi_Age_YearOlds","Pre_TotVoc_Strict", "Post_TotVoc_Strict")] %>%
+  pivot_longer(cols = c("Pre_TotVoc_Strict", "Post_TotVoc_Strict"),
+               names_to = "totvoc_test",
+               values_to = "score")
+
+summary_data_totvoc <- df_complete_totvoc_plot %>%
+  group_by(Chi_Age_YearOlds, totvoc_test) %>%
+  summarise(
+    mean = mean(score),
+    se = se(score),
+    .groups = 'drop'
+  )
+
+summary_data_totvoc$totvoc_test <- factor(summary_data_totvoc$totvoc_test,levels=c("Pre_TotVoc_Strict", "Post_TotVoc_Strict"))
+summary_data_totvoc$Chi_Age_YearOlds <- factor(summary_data_totvoc$Chi_Age_YearOlds,levels=c(3,4,5))
+
+gp <- ggplot(summary_data_totvoc, aes(x=totvoc_test, y=mean, colour=Chi_Age_YearOlds, group=Chi_Age_YearOlds))
+gp + geom_line(linetype="solid", size=.6) + 
+     #geom_point(aes(shape=comprehension_test), size=3) + 
+     geom_errorbar(aes(ymax=mean+se, ymin=mean-se), width=.1)
+
+#relationship between home practice avg and reported usage of the app each week
+vx <- df_complete_totvoc$Home.practice.Average..0.7.
+vy <- df_complete_totvoc$TotVoc_Strict_Learning_Gain
+# Scatter plot
+plot(vx, vy,
+     pch = 19,
+     xlab = "home literacy",
+     ylab = "tot voc learning gain",
+     col = vgroup)
+
+# Legend
+legend("topleft",
+       legend = levels(vgroup),
+       pch = 19,
+       col = factor(levels(vgroup)))
+
+
+#Post_TotVoc_Strict ~ Pre_TotVoc_Strict
+#TotVoc_Strict_Learning_Gain ~
+#Home.practice.Average..0.7.
+TotVoc_strict_lgain = lm(formula =Post_TotVoc_Strict ~Pre_TotVoc_Strict*totalReadingTime_log + Pre_TotVoc_Strict*totalQuestionTime, data = df_complete_totvoc)
+#TotVoc_strict_lgain = lm(formula = TotVoc_Strict_Learning_Gain ~  Home.practice.Average..0.7. + use_req_complete, data = df_complete_totvoc)
+#summary(TotVoc_strict_lgain)
+# Get standardized coefficients
+model_standardized_totvoc <- lm.beta(TotVoc_strict_lgain)
+
+# Summarize the model to see standardized coefficients
+summary(model_standardized_totvoc)
+
+# Calculating VIF
+vif_values <- vif(TotVoc_strict_lgain)
+vif_values
+
+#TotVoc_strict_lgain_int = lm(formula =Post_TotVoc_Strict ~Pre_TotVoc_Strict + Home.practice.Average..0.7.*totalQuestionTime_group + Home.practice.Average..0.7., data = df_complete_totvoc)
+#summary(TotVoc_strict_lgain_int)
+
+#TotVoc_strict_lgain2 = lm(formula = TotVoc_Strict_Learning_Gain ~  FamilyConversReport + avgTimePerQuestion, data = df_complete_totvoc)
+#summary(TotVoc_strict_lgain2)
+
+#cor.test(df_complete_totvoc$use_req_complete,df_complete_totvoc$Home.practice.Average..0.7.)
+
+plot(df_complete_totvoc$totalQuestionTime, df_complete_totvoc$Post_TotVoc_Strict, xlab = "total question time", ylab = "post test vocab", pch = 19, col = "blue")
+plot(df_complete_totvoc$totalReadingTime_log, df_complete_totvoc$Post_TotVoc_Strict, xlab = "total reading time", ylab = "post test vocab", pch = 19, col = "red")
+#plot(df_complete_totvoc$Home.practice.Average..0.7., df_complete$avgTimePerQuestion, xlab = "home literacy score", ylab = "time spent per question in avg", pch = 19, col = "orange")
+
+plot(df_complete_totvoc$Home.practice.Average..0.7.,df_complete_totvoc$totalQuestionTime)
+
+```
+
+```{r retell_analysis}
+
+
+
+df_complete_retell <- df_complete
+df_complete_retell <- filter(df_complete_retell, ID_CC!=28)
+df_complete_retell <- filter(df_complete_retell, ID_CC!=35)
+
+df_complete_retell$Story.Mem_Pre.Test <- as.numeric(gsub("%", "", df_complete_retell$Story.Memory_Pre.Test.Percentage))
+df_complete_retell$Story.Mem_Post.Test <- as.numeric(gsub("%", "", df_complete_retell$Story.Memory_Post.Test.Percentage))
+
+df_complete_retell$Retell_TypeToken_Ratio_Learning_Gain <- df_complete_retell$Post.Test_Retell_TypeToken_Ratio - df_complete_retell$Pre.Test_Retell_TypeToken_Ratio
+
+#df_complete_retell <- df_complete_retell[df_complete_retell$Post.Test_Retell_TypeToken_Ratio!=0 | df_complete_retell$Pre.Test_Retell_TypeToken_Ratio!=0,]
+
+#df_complete_retell <- df_complete_retell[df_complete_retell$Post.Test_Retell_WordType!=0 | df_complete_retell$Pre.Test_Retell_WordType!=0,]
+df_complete_retell <- df_complete_retell[df_complete_retell$Story.Mem_Post.Test !=0.0 | df_complete_retell$Story.Mem_Pre.Test!=0.0,]
+
+#df_complete_retell$Retell_Type_Learning_Gain = df_complete_retell$Post.Test_Retell_WordType - df_complete_retell$Pre.Test_Retell_WordType
+
+#df_complete_retell$Retell_Token_Learning_Gain = df_complete_retell$Post.Test_Retell_WordToken - df_complete_retell$Pre.Test_Retell_WordToken
+
+#df_complete_retell$Retell_TypeToken_Ratio_Learning_Gain <- 0
+#df_complete_retell$Retell_TypeToken_Ratio_Learning_Gain <- df_complete_retell$Post.Test_Retell_TypeToken_Ratio - df_complete_retell$Pre.Test_Retell_TypeToken_Ratio
+
+# Create the boxplot
+ggplot(df_complete_retell, aes(x = as.factor(Chi_Age_YearOlds), y = Retell_Token_Learning_Gain)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(title = "Boxplot per Group", x = "Child age", y = "Retell gain (token number)")
+
+# Create the boxplot
+ggplot(df_complete_retell, aes(x = as.factor(Chi_Age_YearOlds), y = Retell_Type_Learning_Gain)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(title = "Boxplot per Group", x = "Child age", y = "Retell gain (word type)")
+
+# Create the boxplot
+#ggplot(df_complete_retell, aes(x = as.factor(Chi_Age_YearOlds), y = Retell_TypeToken_Ratio_Learning_Gain)) +
+#  geom_boxplot() +
+#  theme_minimal() +
+#  labs(title = "Boxplot per Group", x = "Child age", y = "Retell gain (type/token ratio)")
+
+# Pivot the data frame for word type retell
+df_complete_retell_plot2 <- df_complete_retell[, c("Chi_Age_YearOlds","Pre.Test_Retell_WordType", "Post.Test_Retell_WordType")] %>%
+  pivot_longer(cols = c("Pre.Test_Retell_WordType", "Post.Test_Retell_WordType"),
+               names_to = "retell_test",
+               values_to = "score")
+
+summary_data_retell2 <- df_complete_retell_plot2 %>%
+  group_by(Chi_Age_YearOlds, retell_test) %>%
+  summarise(
+    mean = mean(score),
+    se = se(score),
+    .groups = 'drop'
+  )
+
+summary_data_retell2$retell_test <- factor(summary_data_retell2$retell_test,levels=c("Pre.Test_Retell_WordType", "Post.Test_Retell_WordType"))
+summary_data_retell2$Chi_Age_YearOlds <- factor(summary_data_retell2$Chi_Age_YearOlds,levels=c(3,4,5))
+
+gp2 <- ggplot(summary_data_retell2, aes(x=retell_test, y=mean, colour=Chi_Age_YearOlds, group=Chi_Age_YearOlds))
+gp2 + geom_line(linetype="solid", size=.6) + 
+     #geom_point(aes(shape=comprehension_test), size=3) + 
+     geom_errorbar(aes(ymax=mean+se, ymin=mean-se), width=.1)
+
+# Pivot the data frame for word type retell
+df_complete_retell_plot <- df_complete_retell[, c("Chi_Age_YearOlds","Pre.Test_Retell_WordToken", "Post.Test_Retell_WordToken")] %>%
+  pivot_longer(cols = c("Pre.Test_Retell_WordToken", "Post.Test_Retell_WordToken"),
+               names_to = "retell_test",
+               values_to = "score")
+
+summary_data_retell <- df_complete_retell_plot %>%
+  group_by(Chi_Age_YearOlds, retell_test) %>%
+  summarise(
+    mean = mean(score),
+    se = se(score),
+    .groups = 'drop'
+  )
+
+summary_data_retell$retell_test <- factor(summary_data_retell$retell_test,levels=c("Pre.Test_Retell_WordToken", "Post.Test_Retell_WordToken"))
+summary_data_retell$Chi_Age_YearOlds <- factor(summary_data_retell$Chi_Age_YearOlds,levels=c(3,4,5))
+
+gp <- ggplot(summary_data_retell, aes(x=retell_test, y=mean, colour=Chi_Age_YearOlds, group=Chi_Age_YearOlds))
+gp + geom_line(linetype="solid", size=.6) + 
+     #geom_point(aes(shape=comprehension_test), size=3) + 
+     geom_errorbar(aes(ymax=mean+se, ymin=mean-se), width=.1)
+
+rgroup <- factor(df_complete_retell$Par_Edu)
+
+rx <- df_complete_retell$Chi_Age_Month
+ry <- df_complete_retell$Retell_TypeToken_Ration_Learning_Gain
+# Scatter plot
+plot(rx, ry,
+     pch = 19,
+     xlab = "Child age in months",
+     ylab = "Pretest retell ratio",
+     col = rgroup)
+
+# Legend
+legend("topleft",
+       legend = levels(rgroup),
+       pch = 19,
+       col = factor(levels(rgroup)))
+
+corr_res_retell <- rcorr(as.matrix(df_complete_retell[,c("Pre.Test_Retell_WordToken","Post.Test_Retell_WordToken","Retell_Token_Learning_Gain","Par_Edu_num","Home.practice.Average..0.7.","clickPromptsUnique","chapter_openings","activityDays","avgTimePerQuestion","avgReadingTimePerChapter","totalTime","Chi_Age_YearOlds","totalReadingTime","totalQuestionTime","FamilyConversReport","totalReadingTime_log","clickPromptsUnique_log","totalTime_log","propQuestionTime")]))#,"chapter_openings","clickPromptsUnique","avgTimePerQuestion","avgReadingTimePerChapter")]))
+
+corr_matrix_retell <- corr_res_retell$r
+p_values_retell <- corr_res_retell$P
+p_values_retell[is.na(p_values_retell)] <- 1
+# Function to format p-values
+signif_stars <- function(p_values_retell) {
+  symnum(p_values_retell, corr = FALSE, na = FALSE,
+         cutpoints = c(0, 0.001, 0.01, 0.05, 0.1, 1),
+         symbols = c("***", "**", "*", ".", " "))
+}
+# Create the correlation plot with p-values
+corrplot(corr_matrix_retell, method = "color", type = "upper", tl.col = "black", tl.srt = 45,
+         addCoef.col = "black", p.mat = p_values_retell, sig.level = 0.05, insig = "blank",
+         number.cex = 0.7, cl.cex = 0.7)#, title = "Correlation Matrix with P-values")
+
+#Post.Test_Retell_TypeToken_Ratio ~ Pre.Test_Retell_TypeToken_Ratio +
+#Retell_TypeToken_Ration_Learning_Gain
+TotVoc_lm_retell_type = lm(formula = Post.Test_Retell_WordType ~  Pre.Test_Retell_WordType*totalQuestionTime + Pre.Test_Retell_WordType*totalReadingTime_log, data = df_complete_retell)
+#summary(TotVoc_lm_retell_type)
+
+TotVoc_lm_retell_token = lm(formula = Retell_Token_Learning_Gain ~  Pre.Test_Retell_WordToken*totalQuestionTime + Pre.Test_Retell_WordToken*totalReadingTime_log, data = df_complete_retell)
+#summary(TotVoc_lm_retell_token)
+
+TotVoc_lm_retell_ratio = lm(formula = Post.Test_Retell_TypeToken_Ratio ~  Pre.Test_Retell_TypeToken_Ratio*totalQuestionTime + Pre.Test_Retell_TypeToken_Ratio*totalReadingTime_log, data = df_complete_retell)
+
+TotVoc_lm_retell_mem = lm(formula = Story.Mem_Post.Test ~  Story.Mem_Pre.Test*totalQuestionTime, data = df_complete_retell)
+#summary(TotVoc_lm_retell_ratio)
+
+# Get standardized coefficients
+model_standardized_retell <- lm.beta(TotVoc_lm_retell_mem)
+
+# Summarize the model to see standardized coefficients
+summary(model_standardized_retell)
+
+#plot(df_complete_comp$totalReadingTime, df_complete_comp$Post_Comprenhension_task, xlab = "total reading time", ylab = "post comprehensive task score", pch = 19, col = "blue")
+
+hist(df_complete_retell$Retell_TypeToken_Ratio_Learning_Gain)
+plot(df_complete_retell$Story.Mem_Pre.Test,df_complete_retell$Story.Mem_Post.Test)
+plot(df_complete_retell$totalQuestionTime,df_complete_retell$Story.Mem_Post.Test)
+
+
+```
+
+```{r comprehension_task_analysis}
+
+#df_complete_comp <- filter(df_complete, Chi_Age_YearOlds!='3')
+df_complete_comp <- df_complete
+df_complete_comp <- df_complete_comp[df_complete_comp$comp_zero_zero==0,]
+#df_complete_comp <- df_complete_comp[df_complete_comp$Comp_Learning_Gain>0,]
+
+# Pivot the data frame
+df_complete_comp_plot <- df_complete_comp[, c("Chi_Age_YearOlds","Pre_Comprenhension_task","Post_Comprenhension_task")] %>%
+  pivot_longer(cols = c("Pre_Comprenhension_task", "Post_Comprenhension_task"),
+               names_to = "comprehension_test",
+               values_to = "score")
+
+summary_data_comp <- df_complete_comp_plot %>%
+  group_by(Chi_Age_YearOlds, comprehension_test) %>%
+  summarise(
+    mean = mean(score),
+    se = se(score),
+    .groups = 'drop'
+  )
+
+summary_data_comp$comprehension_test <- factor(summary_data_comp$comprehension_test,levels=c("Pre_Comprenhension_task", "Post_Comprenhension_task"))
+summary_data_comp$Chi_Age_YearOlds <- factor(summary_data_comp$Chi_Age_YearOlds,levels=c(3,4,5))
+
+corr_res_comp <- rcorr(as.matrix(df_complete_comp[,c("Pre_Comprenhension_task","Post_Comprenhension_task","Comp_Learning_Gain","Par_Edu_num","Home.practice.Average..0.7.","use_req_complete","clickPromptsUnique","chapter_openings","activityDays","avgTimePerQuestion","avgReadingTimePerChapter","totalTime","Chi_Age_YearOlds","totalReadingTime","totalQuestionTime","FamilyConversReport","totalReadingTime_log","clickPromptsUnique_log","totalTime_log","propQuestionTime")]))#,"chapter_openings","clickPromptsUnique","avgTimePerQuestion","avgReadingTimePerChapter")]))
+# Extract the correlation coefficients and p-values
+corr_matrix_comp <- corr_res_comp$r
+p_values_comp <- corr_res_comp$P
+p_values_comp[is.na(p_values_comp)] <- 1
+# Function to format p-values
+signif_stars <- function(p_values_comp) {
+  symnum(p_values_comp, corr = FALSE, na = FALSE,
+         cutpoints = c(0, 0.001, 0.01, 0.05, 0.1, 1),
+         symbols = c("***", "**", "*", ".", " "))
+}
+# Create the correlation plot with p-values
+corrplot(corr_matrix_comp, method = "color", type = "upper", tl.col = "black", tl.srt = 45,
+         addCoef.col = "black", p.mat = p_values_comp, sig.level = 0.05, insig = "blank",
+         number.cex = 0.7, cl.cex = 0.7)#, title = "Correlation Matrix with P-values")
+
+gp <- ggplot(summary_data_comp, aes(x=comprehension_test, y=mean, colour=Chi_Age_YearOlds, group=Chi_Age_YearOlds))
+gp + geom_line(linetype="solid", size=.6) + 
+     #geom_point(aes(shape=comprehension_test), size=3) + 
+     geom_errorbar(aes(ymax=mean+se, ymin=mean-se), width=.1)
+
+
+
+# Create the boxplot
+ggplot(df_complete_comp, aes(x = as.factor(Chi_Age_YearOlds), y = Comp_Learning_Gain)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(title = "Boxplot per Group", x = "Child age", y = "Comprehensive task learning gain")
+
+#df_complete_comp <- filter(df_complete, Chi_Age_YearOlds!='3')
+
+cgroup <- factor(df_complete_comp$Par_Edu)
+
+cx <- df_complete_comp$Chi_Age_Month
+cy <- df_complete_comp$Pre_Comprenhension_task
+# Scatter plot
+plot(cx, cy,
+     pch = 19,
+     xlab = "Child age in months",
+     ylab = "Pretest Comprehensive task",
+     col = cgroup)
+
+# Legend
+legend("topleft",
+       legend = levels(cgroup),
+       pch = 19,
+       col = factor(levels(cgroup)))
+
+#TO-DO: check if differences in comprehensive task scores are related to the order of the stories!
+
+#Post.Test_Retell_TypeToken_Ratio ~ Pre.Test_Retell_TypeToken_Ratio +
+#Retell_TypeToken_Ration_Learning_Gain
+lm_comp = lm(formula = Post_Comprenhension_task ~  Pre_Comprenhension_task*totalQuestionTime+ Pre_Comprenhension_task*totalReadingTime_log, data = df_complete_comp)
+
+# Get standardized coefficients
+model_standardized_comp <- lm.beta(lm_comp)
+
+# Summarize the model to see standardized coefficients
+summary(model_standardized_comp)
+
+#print(summary(TotVoc_lm_comp))
+
+TotVoc_lm_comp_int = lm(formula = Post_Comprenhension_task ~  Pre_Comprenhension_task*activityDays, data = df_complete_comp)
+#print(summary(TotVoc_lm_comp_int))
+
+# Calculating VIF
+vif_values <- vif(lm_comp)
+vif_values
+
+plot(df_complete_comp$totalQuestionTime,df_complete_comp$Post_Comprenhension_task)
+
+#interaction plot 2 continuous variables
+# Fit the linear model with interaction terms
+model_comp <- lm(Post_Comprenhension_task ~ Pre_Comprenhension_task * totalQuestionTime, data = df_complete_comp)
+#summary(model_comp)
+
+model_comp_one <- lm(Post_Comprenhension_task ~ Pre_Comprenhension_task * totalReadingTime_log, data = df_complete_comp)
+
+# Create a grid of values for x1 and x2
+grid_comp <- expand.grid(
+  Pre_Comprenhension_task = seq(min(df_complete_comp$Pre_Comprenhension_task), max(df_complete_comp$Pre_Comprenhension_task), length.out = 100),
+  totalReadingTime_log = seq(min(df_complete_comp$totalReadingTime_log), max(df_complete_comp$totalReadingTime_log), length.out = 100))#,
+#   totalQuestionTime = seq(min(df_complete_comp$totalQuestionTime), max(df_complete_comp$totalQuestionTime), #length.out = 100)
+#)
+
+# Add predictions to the grid
+grid_comp$Post_Comprenhension_task <- predict(model_comp_one, newdata = grid_comp)
+
+# Plot the interaction effect
+ggplot(grid_comp, aes(x = Pre_Comprenhension_task, y = Post_Comprenhension_task, color = totalReadingTime_log, group = totalReadingTime_log)) + 
+  geom_line() + 
+  ggtitle("Interaction Plot: Continuous Variables") + 
+  xlab("Pre Comprehension Task") + 
+  ylab("Predicted Post Comprehension task") + 
+  theme_minimal() + 
+  scale_color_gradient(low = "blue", high = "red") + 
+  theme(legend.position = "bottom")
+
+```
+
+```{r home_literacy_graphs}
+
+groups <- factor(df_complete$Chi_Age_YearOlds)
+#Home.practice.Average..0.7.
+a <- df_complete$TotVoc_Strict_Learning_Gain
+b <- df_complete$avgTimePerQuestion
+# Scatter plot
+plot(a, b,
+     pch = 19,
+     xlab = "Voc Strict Gain",
+     ylab = "avg time per question",
+     col = groups)
+
+# Legend
+legend("topleft",
+       legend = levels(groups),
+       pch = 19,
+       col = factor(levels(groups)))
+
+c <- df_complete$Home.practice.Average..0.7.
+d <- df_complete$Comp_Learning_Gain
+# Scatter plot
+plot(c, d,
+     pch = 19,
+     xlab = "home literacy",
+     ylab = "days spent in the app",
+     col = groups)
+
+# Legend
+legend("topleft",
+       legend = levels(groups),
+       pch = 19,
+       col = factor(levels(groups)))
+
+# grouped boxplot
+ggplot(df_complete, aes(x=Chi_Sex, y=Comp_Learning_Gain, fill=factor(Chi_Age_YearOlds))) + 
+    geom_boxplot()
+```
+
+```{r other_graphs}
+
+group2 <- factor(df_complete_plot$Chi_Sex)
+
+a <- df_complete_plot$propQuestionTime
+b <- df_complete_plot$Comp_Learning_Gain
+# Scatter plot
+plot(a, b,
+     pch = 19,
+     xlab = "Avg time per question",
+     ylab = "Self-reported usage of the app",
+     col = group2)
+
+# Legend
+legend("topleft",
+       legend = levels(group2),
+       pch = 19,
+       col = factor(levels(group2)))
+
+c <- df_complete_plot$clickPromptsUnique
+d <- df_complete_plot$ATL_Learning_Gain
+# Scatter plot
+plot(c, d,
+     pch = 19,
+     xlab = "Age child in months",
+     ylab = "Proportion of time spent asking questions",
+     col = group2)
+
+# Legend
+legend("topleft",
+       legend = levels(group2),
+       pch = 19,
+       col = factor(levels(group2)))
+```
+
+
+```
+
+```{r boxplots_per_group}
+library(ggplot2)
+
+# grouped boxplot
+ggplot(df_complete, aes(x=Chi_Sex, y=totalQuestionTime, fill=factor(Chi_Age_YearOlds))) + 
+    geom_boxplot()
+
+# grouped boxplot
+ggplot(df_complete, aes(x=Chi_Sex, y=propQuestionTime, fill=factor(Chi_Age_YearOlds))) + 
+    geom_boxplot()
 ```
