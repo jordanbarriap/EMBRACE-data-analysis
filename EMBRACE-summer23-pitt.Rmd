@@ -84,10 +84,11 @@ se <- function(x) {
   sd(x) / sqrt(length(x))
 }
 
+
 cor.test(df_complete$Par_Edu_num, df_complete$Home.practice.Average..0.7.)
-cor.test(df_complete$totalQuestionTime, df_complete$Home.practice.Average..0.7.)
-cor.test(df_complete$totalReadingTime_log, df_complete$Home.practice.Average..0.7.)
-cor.test(df_complete$totalQuestionTime, df_complete$clickPromptsUnique)
+#cor.test(df_complete$totalQuestionTime, df_complete$Home.practice.Average..0.7.)
+#cor.test(df_complete$totalReadingTime_log, df_complete$Home.practice.Average..0.7.)
+#cor.test(df_complete$totalQuestionTime, df_complete$clickPromptsUnique)
 
 ```
 
@@ -483,7 +484,7 @@ nrow(df_complete_totvoc)
 
 vgroup <- factor(df_complete_totvoc$Par_Edu)
 
-corr_res_totvoc <- rcorr(as.matrix(df_complete_totvoc[,c("Pre_TotVoc_Strict","Post_TotVoc_Strict","TotVoc_Strict_Learning_Gain","Par_Edu_num","Home.practice.Average..0.7.","use_req_complete","clickPromptsUnique","chapter_openings","activityDays","avgTimePerQuestion","avgReadingTimePerChapter","Chi_Age_YearOlds","totalReadingTime","totalQuestionTime","FamilyConversReport","totalReadingTime_log","clickPromptsUnique_log","totalTime_log","propQuestionTime")]))#,"chapter_openings","clickPromptsUnique","avgTimePerQuestion","avgReadingTimePerChapter")]))
+corr_res_totvoc <- rcorr(as.matrix(df_complete_totvoc[,c("Home.practice.Average..0.7.","totalReadingTime_log","totalQuestionTime")]))#"Pre_TotVoc_Strict","Post_TotVoc_Strict","TotVoc_Strict_Learning_Gain","Par_Edu_num","Home.practice.Average..0.7.","use_req_complete","clickPromptsUnique","chapter_openings","activityDays","avgTimePerQuestion","avgReadingTimePerChapter","Chi_Age_YearOlds","totalReadingTime","totalQuestionTime","FamilyConversReport","totalReadingTime_log","clickPromptsUnique_log","totalTime_log","propQuestionTime")]))#,"chapter_openings","clickPromptsUnique","avgTimePerQuestion","avgReadingTimePerChapter")]))
 # Extract the correlation coefficients and p-values
 corr_matrix_totvoc <- corr_res_totvoc$r
 p_values_totvoc <- corr_res_totvoc$P
@@ -563,7 +564,11 @@ legend("topleft",
 #Post_TotVoc_Strict ~ Pre_TotVoc_Strict
 #TotVoc_Strict_Learning_Gain ~
 #Home.practice.Average..0.7.
-TotVoc_strict_lgain = lm(formula =Post_TotVoc_Strict ~Pre_TotVoc_Strict*totalReadingTime_log + Pre_TotVoc_Strict*totalQuestionTime, data = df_complete_totvoc)
+
+#5 variables model (2 interactions)
+#TotVoc_strict_lgain = lm(formula =Post_TotVoc_Strict ~Pre_TotVoc_Strict*totalReadingTime_log + Pre_TotVoc_Strict*totalQuestionTime, data = df_complete_totvoc)
+TotVoc_strict_lgain = lm(formula =Post_TotVoc_Strict ~Pre_TotVoc_Strict + totalReadingTime_log + totalQuestionTime, data = df_complete_totvoc)
+
 #TotVoc_strict_lgain = lm(formula = TotVoc_Strict_Learning_Gain ~  Home.practice.Average..0.7. + use_req_complete, data = df_complete_totvoc)
 #summary(TotVoc_strict_lgain)
 # Get standardized coefficients
@@ -608,7 +613,7 @@ df_complete_retell$Retell_TypeToken_Ratio_Learning_Gain <- df_complete_retell$Po
 #df_complete_retell <- df_complete_retell[df_complete_retell$Post.Test_Retell_TypeToken_Ratio!=0 | df_complete_retell$Pre.Test_Retell_TypeToken_Ratio!=0,]
 
 #df_complete_retell <- df_complete_retell[df_complete_retell$Post.Test_Retell_WordType!=0 | df_complete_retell$Pre.Test_Retell_WordType!=0,]
-df_complete_retell <- df_complete_retell[df_complete_retell$Story.Mem_Post.Test !=0.0 | df_complete_retell$Story.Mem_Pre.Test!=0.0,]
+#df_complete_retell <- df_complete_retell[df_complete_retell$Story.Mem_Post.Test !=0.0 | df_complete_retell$Story.Mem_Pre.Test!=0.0,]
 
 #df_complete_retell$Retell_Type_Learning_Gain = df_complete_retell$Post.Test_Retell_WordType - df_complete_retell$Pre.Test_Retell_WordType
 
@@ -720,9 +725,9 @@ TotVoc_lm_retell_type = lm(formula = Post.Test_Retell_WordType ~  Pre.Test_Retel
 TotVoc_lm_retell_token = lm(formula = Retell_Token_Learning_Gain ~  Pre.Test_Retell_WordToken*totalQuestionTime + Pre.Test_Retell_WordToken*totalReadingTime_log, data = df_complete_retell)
 #summary(TotVoc_lm_retell_token)
 
-TotVoc_lm_retell_ratio = lm(formula = Post.Test_Retell_TypeToken_Ratio ~  Pre.Test_Retell_TypeToken_Ratio*totalQuestionTime + Pre.Test_Retell_TypeToken_Ratio*totalReadingTime_log, data = df_complete_retell)
+TotVoc_lm_retell_ratio = lm(formula = Post.Test_Retell_TypeToken_Ratio ~  Pre.Test_Retell_TypeToken_Ratio + totalQuestionTime + totalReadingTime_log, data = df_complete_retell)
 
-TotVoc_lm_retell_mem = lm(formula = Story.Mem_Post.Test ~  Story.Mem_Pre.Test*totalQuestionTime, data = df_complete_retell)
+TotVoc_lm_retell_mem = lm(formula = Story.Mem_Post.Test ~  Story.Mem_Pre.Test+ totalQuestionTime + totalReadingTime_log, data = df_complete_retell)
 #summary(TotVoc_lm_retell_ratio)
 
 # Get standardized coefficients
@@ -744,7 +749,7 @@ plot(df_complete_retell$totalQuestionTime,df_complete_retell$Story.Mem_Post.Test
 
 #df_complete_comp <- filter(df_complete, Chi_Age_YearOlds!='3')
 df_complete_comp <- df_complete
-df_complete_comp <- df_complete_comp[df_complete_comp$comp_zero_zero==0,]
+#df_complete_comp <- df_complete_comp[df_complete_comp$comp_zero_zero==0,]
 #df_complete_comp <- df_complete_comp[df_complete_comp$Comp_Learning_Gain>0,]
 
 # Pivot the data frame
@@ -795,7 +800,7 @@ ggplot(df_complete_comp, aes(x = as.factor(Chi_Age_YearOlds), y = Comp_Learning_
 
 #df_complete_comp <- filter(df_complete, Chi_Age_YearOlds!='3')
 
-cgroup <- factor(df_complete_comp$Par_Edu)
+cgroup <- factor(df_complete_comp$Chi_Age_YearOlds)
 
 cx <- df_complete_comp$Chi_Age_Month
 cy <- df_complete_comp$Pre_Comprenhension_task
@@ -816,7 +821,7 @@ legend("topleft",
 
 #Post.Test_Retell_TypeToken_Ratio ~ Pre.Test_Retell_TypeToken_Ratio +
 #Retell_TypeToken_Ration_Learning_Gain
-lm_comp = lm(formula = Post_Comprenhension_task ~  Pre_Comprenhension_task*totalQuestionTime+ Pre_Comprenhension_task*totalReadingTime_log, data = df_complete_comp)
+lm_comp = lm(formula = Post_Comprenhension_task ~  Pre_Comprenhension_task + totalQuestionTime+ totalReadingTime_log, data = df_complete_comp)
 
 # Get standardized coefficients
 model_standardized_comp <- lm.beta(lm_comp)
@@ -833,7 +838,12 @@ TotVoc_lm_comp_int = lm(formula = Post_Comprenhension_task ~  Pre_Comprenhension
 vif_values <- vif(lm_comp)
 vif_values
 
-plot(df_complete_comp$totalQuestionTime,df_complete_comp$Post_Comprenhension_task)
+plot(df_complete_comp$totalReadingTime_log,df_complete_comp$Comp_Learning_Gain, col=cgroup)
+# Legend
+legend("topleft",
+       legend = levels(cgroup),
+       pch = 19,
+       col = factor(levels(cgroup)))
 
 #interaction plot 2 continuous variables
 # Fit the linear model with interaction terms
